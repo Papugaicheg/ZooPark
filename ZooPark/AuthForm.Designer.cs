@@ -62,8 +62,10 @@
             this.tbPassword.Location = new System.Drawing.Point(88, 142);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(4);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(307, 23);
             this.tbPassword.TabIndex = 2;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -100,8 +102,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AuthForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
-            this.Load += new System.EventHandler(this.AuthForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

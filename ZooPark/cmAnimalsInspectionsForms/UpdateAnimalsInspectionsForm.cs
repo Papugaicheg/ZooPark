@@ -18,6 +18,7 @@ namespace ZooPark.cmAnimalsInspectionsForms
         private string fio;
         private int animal;
         private string animalName;
+        private DateTime animalDate;
         private DateTime employeeAcceptDate;
         private DateTime? employeeDismissDate;
         private DateTime date;//1955 01 01
@@ -33,6 +34,7 @@ namespace ZooPark.cmAnimalsInspectionsForms
                 this.fio = record.Сотрудник1.Фамилия + ' ' + record.Сотрудник1.Имя + ' ' + record.Сотрудник1.Отчество;
                 this.animal = record.Животное;
                 this.animalName = this.animal.ToString() + " - " + record.Животное1.Название;
+                this.animalDate = record.Животное1.Дата_поступления;
                 this.employeeAcceptDate = record.Сотрудник1.Дата_приема;
                 this.employeeDismissDate = record.Сотрудник1.Дата_увольнения;
                 this.date = record.Дата_проверки;
@@ -50,7 +52,7 @@ namespace ZooPark.cmAnimalsInspectionsForms
             tbAnimal.Text = this.animalName;
         
             InspectionDatePicker.MaxDate = this.employeeDismissDate ?? DateTime.Today;
-            InspectionDatePicker.MinDate = this.employeeAcceptDate;
+            InspectionDatePicker.MinDate = this.employeeAcceptDate>this.animalDate?this.employeeAcceptDate : this.animalDate;
             InspectionDatePicker.Value = this.date;
 
             tbComment.Text = this.comment;

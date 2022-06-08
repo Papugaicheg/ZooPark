@@ -15,6 +15,7 @@ namespace ZooPark.cmAnimalsInspectionsForms
         private int idEmp;
         private string comment;
         private DateTime receiptDate;
+        private DateTime acceptDate;
         public AddAnimalsInspectionsForm(int id)
         {
             InitializeComponent();
@@ -25,16 +26,15 @@ namespace ZooPark.cmAnimalsInspectionsForms
         {
             using (var db = new ZooparkModel())
             {
-               
+                
                 InspectionDatePicker.MaxDate = db.Сотрудник.Where(rec=>rec.ID==idEmp).First().Дата_увольнения ?? DateTime.Today;
-                InspectionDatePicker.MinDate = db.Сотрудник.Where(rec => rec.ID == idEmp).First().Дата_приема;
+                this.acceptDate = db.Сотрудник.Where(rec => rec.ID == idEmp).First().Дата_приема;
+                InspectionDatePicker.MinDate = this.acceptDate;
                 
                 var emp = db.Сотрудник.Where(em => em.ID == idEmp).First();
                 tbEmployee.Text =  emp.ID + " " + emp.Фамилия + ' ' + emp.Имя + ' ' + emp.Отчество;
                 if (db.Животное.Any()) { 
-
-
-                cbAnimal.DataSource = GetAnimals();
+                    cbAnimal.DataSource = GetAnimals();
                 }
                 else
                 {
@@ -140,13 +140,14 @@ namespace ZooPark.cmAnimalsInspectionsForms
 
         private void cbAnimal_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            int  animalID = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
+            int animalID = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
+            
             using(var db = new ZooparkModel())
             {
                 this.receiptDate = db.Животное.Where(an => an.ID == animalID).First().Дата_поступления;
+                InspectionDatePicker.MinDate = this.receiptDate > this.acceptDate ? this.receiptDate : this.acceptDate;
 
             }
-            InspectionDatePicker.MinDate = receiptDate;
         }
     }
 }

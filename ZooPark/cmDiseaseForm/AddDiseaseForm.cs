@@ -60,13 +60,13 @@ namespace ZooPark.cmDiseaseForm
                 {
                     int animal = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
                     int disease = Convert.ToInt32(cbDisease.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
-                    if (!db.Болезнь.Any(d => d.Заболевания == disease && d.Животное == animal))
+                    if (!db.Болезнь.Any(d => d.Заболевание == disease && d.Животное == animal))
                     {
                         db.Болезнь.Add(new Болезнь
                         {
 
                             Животное = animal,
-                            Заболевания = disease
+                            Заболевание = disease
                         });
 
 

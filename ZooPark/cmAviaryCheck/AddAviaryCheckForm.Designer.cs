@@ -178,6 +178,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbEmployee);
             this.Name = "AddAviaryCheckForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddAviaryCheckForm";
             this.Load += new System.EventHandler(this.AddAviaryCheckForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

@@ -29,33 +29,56 @@ namespace ZooPark
             using (var db = new ZooparkModel())
             {
                 if (db.Учетные_записи.Any(record => record.Login == tbLogin.Text))
-                {
+                {   
                     var user = db.Учетные_записи.Where(record => record.Login == tbLogin.Text).First();
-                    if (ByteArrayToString(hash)==user.Password)
+                    if(user.Password == null)
                     {
-                        if (db.Сотрудник.Any(emp => emp.ID == user.Сотрудник.ID && user.Сотрудник.Дата_увольнения != null))
+                       
+                           MessageBox.Show("Ого! Кажется вы наш новый сотрудник! Мы вам очень рады! Поэтому попросим вас придумать себе пароль для вашей учетной записи!" +
+                                           "\nС наилучшими пожеланиями, Ваш Администратор)", "Ошибка аутентификации", MessageBoxButtons.OK);
+                        AddPassForm form = new AddPassForm(user);
+                        if (form.ShowDialog() == DialogResult.OK)
                         {
-                            Zoopark form = new Zoopark(user.Сотрудник.ID);
-                            if (form.ShowDialog() == DialogResult.OK)
+                            this.tbPassword.Text = "";
+                            this.tbLogin.Text = "";
+                            Zoopark form1 = new Zoopark(user.Сотрудник.ID);
+                            if (form1.ShowDialog() == DialogResult.OK)
                             {
-
+                                this.Close();
                             }
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("(: !Вы уволены! :)", "Ошибка аутентификации", MessageBoxButtons.OK);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Неверный пароль!", "Ошибка аутентификации", MessageBoxButtons.OK);
+                        if (ByteArrayToString(hash) == user.Password)
+                        {
+                            if (db.Сотрудник.Any(emp => emp.ID == user.Сотрудник.ID && user.Сотрудник.Дата_увольнения == null))
+                            {
+                                Zoopark form = new Zoopark(user.Сотрудник.ID);
+                                if (form.ShowDialog() == DialogResult.OK)
+                                {
+                                    
+                                }
+                                this.tbPassword.Text = "";
+                                this.tbLogin.Text = "";
+                            }
+                            else
+                            {
+                                MessageBox.Show("(: !Вы уволены! :)", "Ошибка аутентификации", MessageBoxButtons.OK);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неверный пароль!", "Ошибка аутентификации", MessageBoxButtons.OK);
+                        }
                     }
-                }   
+
+                }
                 else
                 {
                     MessageBox.Show("Неверно указаны логин или пароль", "Ошибка аутентификации", MessageBoxButtons.OK);
                 }
+
 
             }
         }
@@ -70,9 +93,6 @@ namespace ZooPark
             return sOutput.ToString();
         }
 
-        private void AuthForm_Load(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

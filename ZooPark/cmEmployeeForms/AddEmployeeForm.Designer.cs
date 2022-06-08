@@ -363,7 +363,9 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.tbSurname);
             this.Name = "AddEmployeeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddEmployeeForm";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.AddEmployeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

@@ -25,6 +25,7 @@ namespace ZooPark.cmEmployeeForms
         private DateTime acceptDate;
         private DateTime? dismissDate;
         private string passport;
+        private Сотрудник NewEmp;
 
 
         public AddEmployeeForm()
@@ -294,10 +295,10 @@ namespace ZooPark.cmEmployeeForms
                         Дата_приема = this.acceptDate,
                         Дата_увольнения = this.dismissDate,
                         Паспорт = this.passport});
-                   
 
 
                     db.SaveChanges();
+                    this.NewEmp = db.Сотрудник.Where(emp => emp.ID == db.Сотрудник.Max(em => em.ID)).First();
                 }
 
                 MessageBox.Show("Данные Добавлены!", "Добавлено", MessageBoxButtons.OK);
@@ -307,16 +308,49 @@ namespace ZooPark.cmEmployeeForms
                 MessageBox.Show("Ошибка в данных!", "Ошибка", MessageBoxButtons.OK);
             }
         }
+
+
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             DialogResult = ValidateChildren() ? DialogResult.OK : DialogResult.None;
             if (DialogResult == DialogResult.OK)
             {
                 AddEmployee();
+                string data = "Логин: " + this.NewEmp.Фамилия + this.NewEmp.ID.ToString() +
+                              "\nПароль необходимо будет задать при первом входе";
+                MessageBox.Show(data, "Учетные данные", MessageBoxButtons.OK);
+                AddAuth();
                 this.Close();
             }
         }
 
-      
+
+
+
+
+        private void AddAuth()
+        {
+            try
+            {
+                using (var db = new ZooparkModel())
+                {
+                    db.Учетные_записи.Add(new Учетные_записи
+                    {
+                        Login = this.NewEmp.Фамилия+this.NewEmp.ID.ToString(),
+                        Password = null,
+                        Employee = this.NewEmp.ID
+                    });
+
+
+                    db.SaveChanges();
+                }
+
+            }
+            catch (Exception)
+            { }
+        }
+
+
     }
 }

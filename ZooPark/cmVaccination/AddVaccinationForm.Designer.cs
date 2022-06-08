@@ -129,6 +129,7 @@
             this.cbAnimal.Name = "cbAnimal";
             this.cbAnimal.Size = new System.Drawing.Size(197, 21);
             this.cbAnimal.TabIndex = 36;
+            this.cbAnimal.SelectedValueChanged += new System.EventHandler(this.cbAnimal_SelectedValueChanged);
             // 
             // AddVaccinationForm
             // 
@@ -146,6 +147,7 @@
             this.Controls.Add(this.VaccinationDatePicker);
             this.Controls.Add(this.tbEmployee);
             this.Name = "AddVaccinationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddVaccinationForm";
             this.ResumeLayout(false);
             this.PerformLayout();

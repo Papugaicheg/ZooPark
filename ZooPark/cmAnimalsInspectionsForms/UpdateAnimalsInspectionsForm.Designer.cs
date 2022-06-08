@@ -168,6 +168,7 @@
             this.Controls.Add(this.tbEmployee);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UpdateAnimalsInspectionsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateAnimalsInspectionsForm";
             this.Load += new System.EventHandler(this.UpdateAnimalsInspectionsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

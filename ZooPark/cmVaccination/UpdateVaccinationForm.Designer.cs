@@ -145,6 +145,7 @@
             this.Controls.Add(this.VaccinationDatePicker);
             this.Controls.Add(this.tbEmployee);
             this.Name = "UpdateVaccinationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateVaccinationForm";
             this.Load += new System.EventHandler(this.UpdateVaccinationForm_Load);
             this.ResumeLayout(false);

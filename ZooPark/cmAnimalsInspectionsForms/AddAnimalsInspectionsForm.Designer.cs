@@ -136,7 +136,7 @@
             this.cbAnimal.Name = "cbAnimal";
             this.cbAnimal.Size = new System.Drawing.Size(200, 21);
             this.cbAnimal.TabIndex = 13;
-            this.cbAnimal.SelectionChangeCommitted += new System.EventHandler(this.cbAnimal_SelectionChangeCommitted);
+            this.cbAnimal.SelectedValueChanged += new System.EventHandler(this.cbAnimal_SelectionChangeCommitted);
             // 
             // tbEmployee
             // 
@@ -167,6 +167,7 @@
             this.Controls.Add(this.InspectionDatePicker);
             this.Controls.Add(this.cbAnimal);
             this.Name = "AddAnimalsInspectionsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddAnimalsInspectionsForm";
             this.Load += new System.EventHandler(this.AddAnimalsInspectionsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

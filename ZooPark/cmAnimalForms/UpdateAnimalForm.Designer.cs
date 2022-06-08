@@ -265,6 +265,7 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lbName);
             this.Name = "UpdateAnimalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateAnimalForm";
             this.Load += new System.EventHandler(this.UpdateAnimalForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

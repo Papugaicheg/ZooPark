@@ -57,27 +57,13 @@ namespace ZooPark.cmAnimalForms
                 return aviaryList;
             }
         }
-        private List<string> GetAviaryForHabitat()
-        {
-            using (var db = new ZooparkModel())
-            {
-                //
-                var aviaries = from aviary in db.Вольер.Where(av => av.Статус == "Не занят" && av.Тип == cbHabitat.SelectedItem.ToString())
-                               select new
-                               {
-                                   Номер = aviary.ID,
-                                   Статус = aviary.Статус
-
-                               };
-                var aviaryList = new List<String>();
-                aviaries.ToList().ForEach(aviary => { aviaryList.Add("№ " + aviary.Номер.ToString() + " - " + aviary.Статус); });
-                return aviaryList;
-            }
-        }
+  
 
         private void AddAnimalForm_Load(object sender, EventArgs e)
         {
             this.Text = "Добавление животного";
+            dtpReceipt.Enabled = false;
+            dtpReceipt.Value = DateTime.Today;
             if(GetHabitat().Count != 0)
             {
                 cbHabitat.DataSource = GetHabitat();
@@ -99,7 +85,6 @@ namespace ZooPark.cmAnimalForms
                 AddAnimalButton.Enabled = false;
                 cbAviary.Enabled = false;
             }
-            dtpReceipt.MaxDate = DateTime.Today;
         }
 
 
@@ -118,8 +103,8 @@ namespace ZooPark.cmAnimalForms
                         Вес = this.weight,
                         Рост = this.height,
                         Тип_среды_обитания = this.habitat,
-                        Дата_поступления = this.dateReceipt
-                    });
+                        Дата_поступления = dtpReceipt.Value
+                    }) ;
 
 
 
@@ -280,13 +265,7 @@ namespace ZooPark.cmAnimalForms
         private void nudAge_ValueChanged(object sender, EventArgs e)
         {
             int age = Convert.ToInt32(nudAge.Value);
-            if (age == 0) { 
-            dtpReceipt.MinDate = DateTime.Today.AddYears(age);
-            }
-            else
-            {
-                dtpReceipt.MinDate = DateTime.Today.AddYears(-1).AddDays(-1);
-            }
+        
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ZooPark
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Zoopark(2));
+            Application.Run(new AuthForm());
         }
         
     }

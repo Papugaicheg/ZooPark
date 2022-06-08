@@ -20,6 +20,7 @@ namespace ZooPark.cmVaccination
         private string animalName;
         private DateTime date;
         private DateTime acceptDate;
+        private DateTime receiptDate;
         private DateTime? dismissDate;
         private int type;
         public UpdateVaccinationForm(int id)
@@ -33,6 +34,7 @@ namespace ZooPark.cmVaccination
                 this.fio = this.id + " - " + record.Сотрудник1.Фамилия + ' ' + record.Сотрудник1.Имя + ' ' + record.Сотрудник1.Отчество;
                 this.animal = record.Животное;
                 this.animalName = this.animal + " - " + record.Животное1.Название;
+                this.receiptDate = this.record.Животное1.Дата_поступления;
                 this.date = record.Дата_прививки;
                 this.acceptDate = record.Сотрудник1.Дата_приема;
                 this.dismissDate = record.Сотрудник1.Дата_увольнения;
@@ -57,6 +59,12 @@ namespace ZooPark.cmVaccination
             {
                 btUpdateVaccination.Enabled = false;
                 MessageBox.Show("Нет возможности добавить запись о прививке, так как отсутстуют типы имеющихся вакцин!","Ошибка", MessageBoxButtons.OK);
+            }
+            using (var db = new ZooparkModel())
+            {
+                
+                this.receiptDate = db.Животное.Where(an => an.ID == animal).First().Дата_поступления;
+                VaccinationDatePicker.MinDate = this.receiptDate > this.acceptDate ? this.receiptDate : this.acceptDate;
             }
 
 

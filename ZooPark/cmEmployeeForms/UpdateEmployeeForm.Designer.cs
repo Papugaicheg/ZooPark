@@ -364,6 +364,7 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.tbSurname);
             this.Name = "UpdateEmployeeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение сотрудника";
             this.Load += new System.EventHandler(this.UpdateEmployeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

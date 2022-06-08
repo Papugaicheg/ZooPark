@@ -105,6 +105,7 @@
             this.Controls.Add(this.diseaseLb);
             this.Controls.Add(this.animalLb);
             this.Name = "AddDiseaseForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddDiseaseForm";
             this.Load += new System.EventHandler(this.AddDiseaseForm_Load);
             this.ResumeLayout(false);

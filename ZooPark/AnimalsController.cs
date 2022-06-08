@@ -117,8 +117,8 @@ namespace ZooPark
                             db.Болезнь.RemoveRange(list);
                         }
                         if (db.Журнал_осмотров.Any(item => item.Животное == animalID)) {
-                            var list = db.Болезнь.Where(item => item.Животное == animalID);
-                            db.Болезнь.RemoveRange(list);
+                            var list = db.Журнал_осмотров.Where(item => item.Животное == animalID);
+                            db.Журнал_осмотров.RemoveRange(list);
                         }
                         db.Животное.Remove(animal);
                         var aviaryObject = db.Вольер.Where(avID => avID.ID == animal.Вольер).First();

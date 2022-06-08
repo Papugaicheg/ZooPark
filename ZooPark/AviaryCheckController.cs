@@ -115,7 +115,39 @@ namespace ZooPark
         }
 
        
+        private void cmDoneClick(object sender, EventArgs e)
+        {
+            if (dgAviaryCheck.SelectedCells.Count > 0)
+            {
+                var i = dgAviaryCheck.SelectedCells[0].OwningRow.Index;
+                int recordID = (int)dgAviaryCheck[0, i].Value;
 
+                using (var db = new ZooparkModel())
+                {
+
+
+                    if (db.Сотрудник.Any(em => em.ID == loggedID && em.Дата_увольнения ==null))
+                    {
+
+                        if(db.Проверка_вольеров.Where(check => check.ID == recordID).First().Комментарий != "Нарушений не выявлено") {
+                            db.Проверка_вольеров.Where(check => check.ID == recordID).First().Комментарий += " | Исправлено";
+                            db.SaveChanges();
+                            SetAviaryCheckGrid();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вольер не имеет нарушений", "Ошибка", MessageBoxButtons.OK);
+                        }
+                     
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вы уволены!", "Ошибка", MessageBoxButtons.OK);
+                    }
+                }
+
+            }
+            }
         private void cmRefreshAviaryCheck_Click(object sender, EventArgs e)
         {
             SetAviaryCheckGrid();

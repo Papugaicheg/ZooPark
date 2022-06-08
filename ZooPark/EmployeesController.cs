@@ -101,8 +101,8 @@ namespace ZooPark
                    
                     using (var db = new ZooparkModel())
                     {
-                        if (db.Журнал_прививок.Any(item => item.Сотрудник == empID) &&
-                            db.Проверка_вольеров.Any(item => item.Сотрудник == empID) &&
+                        if (db.Журнал_прививок.Any(item => item.Сотрудник == empID) ||
+                            db.Проверка_вольеров.Any(item => item.Сотрудник == empID) ||
                             db.Журнал_осмотров.Any(item => item.Сотрудник == empID))
                         {
                             var emp = db.Сотрудник.Where(item => item.ID == empID).First();
@@ -112,7 +112,9 @@ namespace ZooPark
                         }
                         else
                         {
+                            Учетные_записи record = db.Учетные_записи.Where(emp => emp.Сотрудник.ID == empID).First();
                             Сотрудник employee = db.Сотрудник.Where(emp => emp.ID == empID).First();
+                            db.Учетные_записи.Remove(record);
                             db.Сотрудник.Remove(employee);
                             db.SaveChanges();
                         }

@@ -125,6 +125,8 @@
             // 
             // dgEmployee
             // 
+            this.dgEmployee.AllowUserToResizeColumns = false;
+            this.dgEmployee.AllowUserToResizeRows = false;
             this.dgEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgEmployee.ContextMenuStrip = this.cmEmployee;
             this.dgEmployee.Cursor = System.Windows.Forms.Cursors.Default;
@@ -199,6 +201,8 @@
             // 
             // dgAnimals
             // 
+            this.dgAnimals.AllowUserToResizeColumns = false;
+            this.dgAnimals.AllowUserToResizeRows = false;
             this.dgAnimals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAnimals.ContextMenuStrip = this.cmAnimals;
             this.dgAnimals.Location = new System.Drawing.Point(5, 5);
@@ -269,6 +273,8 @@
             // 
             // dgAnimalsInspections
             // 
+            this.dgAnimalsInspections.AllowUserToResizeColumns = false;
+            this.dgAnimalsInspections.AllowUserToResizeRows = false;
             this.dgAnimalsInspections.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgAnimalsInspections.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgAnimalsInspections.ContextMenuStrip = this.cmAnimalsInspections;
@@ -333,6 +339,8 @@
             // 
             // dgVaccinations
             // 
+            this.dgVaccinations.AllowUserToResizeColumns = false;
+            this.dgVaccinations.AllowUserToResizeRows = false;
             this.dgVaccinations.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgVaccinations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgVaccinations.ContextMenuStrip = this.cmVaccination;
@@ -396,6 +404,8 @@
             // 
             // dgDisease
             // 
+            this.dgDisease.AllowUserToResizeColumns = false;
+            this.dgDisease.AllowUserToResizeRows = false;
             this.dgDisease.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgDisease.ContextMenuStrip = this.cmDisease;
             this.dgDisease.Location = new System.Drawing.Point(5, 5);
@@ -457,6 +467,8 @@
             // 
             // dgAviaryCheck
             // 
+            this.dgAviaryCheck.AllowUserToResizeColumns = false;
+            this.dgAviaryCheck.AllowUserToResizeRows = false;
             this.dgAviaryCheck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAviaryCheck.ContextMenuStrip = this.cmAviaryCheck;
             this.dgAviaryCheck.Location = new System.Drawing.Point(5, 5);
@@ -475,33 +487,33 @@
             this.cmRefreshAviaryCheck,
             this.cmDeleteAviaryCheck});
             this.cmAviaryCheck.Name = "cmAviaryCheck";
-            this.cmAviaryCheck.Size = new System.Drawing.Size(181, 114);
+            this.cmAviaryCheck.Size = new System.Drawing.Size(129, 92);
             // 
             // cmUpdateAviaryCheck
             // 
             this.cmUpdateAviaryCheck.Name = "cmUpdateAviaryCheck";
-            this.cmUpdateAviaryCheck.Size = new System.Drawing.Size(180, 22);
+            this.cmUpdateAviaryCheck.Size = new System.Drawing.Size(128, 22);
             this.cmUpdateAviaryCheck.Text = "Изменить";
             this.cmUpdateAviaryCheck.Click += new System.EventHandler(this.cmUpdateAviaryCheck_Click);
             // 
             // cmAddAviaryCheck
             // 
             this.cmAddAviaryCheck.Name = "cmAddAviaryCheck";
-            this.cmAddAviaryCheck.Size = new System.Drawing.Size(180, 22);
+            this.cmAddAviaryCheck.Size = new System.Drawing.Size(128, 22);
             this.cmAddAviaryCheck.Text = "Добавить";
             this.cmAddAviaryCheck.Click += new System.EventHandler(this.cmAddAviaryCheck_Click);
             // 
             // cmRefreshAviaryCheck
             // 
             this.cmRefreshAviaryCheck.Name = "cmRefreshAviaryCheck";
-            this.cmRefreshAviaryCheck.Size = new System.Drawing.Size(180, 22);
+            this.cmRefreshAviaryCheck.Size = new System.Drawing.Size(128, 22);
             this.cmRefreshAviaryCheck.Text = "Обновить";
             this.cmRefreshAviaryCheck.Click += new System.EventHandler(this.cmRefreshAviaryCheck_Click);
             // 
             // cmDeleteAviaryCheck
             // 
             this.cmDeleteAviaryCheck.Name = "cmDeleteAviaryCheck";
-            this.cmDeleteAviaryCheck.Size = new System.Drawing.Size(180, 22);
+            this.cmDeleteAviaryCheck.Size = new System.Drawing.Size(128, 22);
             this.cmDeleteAviaryCheck.Text = "Удалить";
             this.cmDeleteAviaryCheck.Click += new System.EventHandler(this.cmDeleteAviaryCheck_Click);
             // 

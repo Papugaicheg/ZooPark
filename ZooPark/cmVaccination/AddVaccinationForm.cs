@@ -15,6 +15,7 @@ namespace ZooPark.cmVaccination
         private int id;
         private string fio;
         private DateTime acceptDate;
+        private DateTime receiptDate;
         private DateTime? dismissDate;
         public AddVaccinationForm(int empID)
         {
@@ -28,7 +29,7 @@ namespace ZooPark.cmVaccination
                 var employee = db.Сотрудник.Where(rec => rec.ID == empID).First();
                 this.id = employee.ID;
                 this.fio = this.id + " - " + employee.Фамилия + ' ' + employee.Имя + ' ' + employee.Отчество;
-               
+
                 this.acceptDate = employee.Дата_приема;
                 this.dismissDate = employee.Дата_увольнения;
             }
@@ -138,5 +139,16 @@ namespace ZooPark.cmVaccination
             DialogResult = DialogResult.None;
             this.Close();
         }
+
+        private void cbAnimal_SelectedValueChanged(object sender, EventArgs e)
+        {
+            using (var db = new ZooparkModel())
+            {
+                int animalID = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
+                this.receiptDate = db.Животное.Where(an => an.ID == animalID).First().Дата_поступления;
+                VaccinationDatePicker.MinDate = this.receiptDate > this.acceptDate ? this.receiptDate : this.acceptDate;
+            }
+        }
     }
 }
+

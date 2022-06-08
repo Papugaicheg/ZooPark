@@ -39,9 +39,13 @@ namespace ZooPark
                     tabControl.TabPages.AddRange(new TabPage[] { tabEmployee });
                     
                     break;
-                //3   Уборщик
-                case 3:
-                    tabControl.TabPages.AddRange(new TabPage[] { });
+                //3   Уборщик //5   Техник
+                case 3: case 5:
+                
+                    tabControl.TabPages.AddRange(new TabPage[] { tabAviaryCheck });
+                    cmAviaryCheck.Items.Clear();
+                 
+                    cmAviaryCheck.Items.Add(new ToolStripMenuItem(text: "Отметить выполнененым", image: null, onClick: cmDoneClick));
                     break;
 
                 //4   Зоокипер
@@ -49,14 +53,12 @@ namespace ZooPark
                     tabControl.TabPages.AddRange(new TabPage[] { tabAnimals, tabAnimalsInspection, tabAviaryCheck });
                     break;
 
-                //5   Техник
-                case 5:
-                    tabControl.TabPages.AddRange(new TabPage[] { tabAviaryCheck });
-                    break;
+                
 
                 //6   Директор
                 case 6:
                     tabControl.TabPages.AddRange(new TabPage[] { tabEmployee, tabAnimals, tabAnimalsInspection, tabVaccination, tabDisease, tabAviaryCheck });
+                    cmAviaryCheck.Items.Add(new ToolStripMenuItem(text: "Отметить выполнененым", image: null, onClick: cmDoneClick));
                     break;
 
             }

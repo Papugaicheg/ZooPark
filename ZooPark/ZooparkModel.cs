@@ -12,6 +12,7 @@ namespace ZooPark
         {
         }
 
+        public virtual DbSet<Болезнь> Болезнь { get; set; }
         public virtual DbSet<Вольер> Вольер { get; set; }
         public virtual DbSet<Должность> Должность { get; set; }
         public virtual DbSet<Животное> Животное { get; set; }
@@ -68,6 +69,12 @@ namespace ZooPark
                 .IsUnicode(false);
 
             modelBuilder.Entity<Животное>()
+                .HasMany(e => e.Болезнь)
+                .WithRequired(e => e.Животное1)
+                .HasForeignKey(e => e.Животное)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Животное>()
                 .HasMany(e => e.Журнал_осмотров)
                 .WithRequired(e => e.Животное1)
                 .HasForeignKey(e => e.Животное)
@@ -78,11 +85,6 @@ namespace ZooPark
                 .WithRequired(e => e.Животное1)
                 .HasForeignKey(e => e.Животное)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Животное>()
-                .HasMany(e => e.Заболевание)
-                .WithMany(e => e.Животное)
-                .Map(m => m.ToTable("Болезнь").MapLeftKey("Животное").MapRightKey("Заболевание"));
 
             modelBuilder.Entity<Журнал_осмотров>()
                 .Property(e => e.Комментарий)
@@ -99,6 +101,12 @@ namespace ZooPark
             modelBuilder.Entity<Заболевание>()
                 .Property(e => e.Описание)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Заболевание>()
+                .HasMany(e => e.Болезнь)
+                .WithRequired(e => e.Заболевание1)
+                .HasForeignKey(e => e.Заболевание)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Проверка_вольеров>()
                 .Property(e => e.Комментарий)

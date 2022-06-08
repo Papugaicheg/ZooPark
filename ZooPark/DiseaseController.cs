@@ -16,23 +16,32 @@ namespace ZooPark
             using (var db = new ZooparkModel())
             {
 
-                var animals = from animal in db.Животное
+                var posts = from post in db.Болезнь
                               select new
                               {
-                                  Животное = animal.Название
+                                  ID = post.ID,
+                                  Животное = post.Животное1.Название,
+                                  Заболевание = post.Заболевание1.Название
+                                  
                               };
-                return animals.ToList();
+                return posts.ToList();
             }
         }
 
         private void SetDiseaseGrid()
         {
+           
             dgDisease.DataSource = GetDiseases();
-            dgDisease.Columns[0].HeaderText = "Животное";
-            dgDisease.Columns[0].Width = 312;
-            dgDisease.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgDisease.Columns[1].HeaderText = "Заболевание";
+
+            dgDisease.Columns[0].HeaderText = "ID";
+            dgDisease.Columns[0].Width = 50;
+            dgDisease.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgDisease.Columns[1].HeaderText = "Животное";
             dgDisease.Columns[1].Width = 312;
+            dgDisease.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgDisease.Columns[2].HeaderText = "Заболевание";
+            dgDisease.Columns[2].Width = 312;
         }
 
 
