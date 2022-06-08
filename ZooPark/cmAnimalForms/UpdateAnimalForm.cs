@@ -21,6 +21,7 @@ namespace ZooPark.cmAnimalForms
         private double weight;
         private int height;
         private string habitat; //50
+        private DateTime dateReceipt;
 
         public UpdateAnimalForm(int id)
         {
@@ -31,6 +32,7 @@ namespace ZooPark.cmAnimalForms
                 this.aviary = animal.Вольер;
                 this.name = animal.Название;
                 this.habitat = animal.Тип_среды_обитания;
+                this.dateReceipt = animal.Дата_поступления;
             }
             InitializeComponent();
         }
@@ -46,13 +48,16 @@ namespace ZooPark.cmAnimalForms
             cbChangeAviary.Checked = false;
             cbAviary.Enabled = false;
             cbChangeAviary.Enabled = false;
-            cbChangeAviary.Text += " (нет свободных вольеров с этим типом среды обитания)";
+            dtpReceipt.Value = this.dateReceipt;
             using(var db = new ZooparkModel())
             {
-                bool checkAviary = db.Вольер.Any(av => av.Тип == animal.Тип_среды_обитания && av.Статус == "Не занят");
-                if (checkAviary)
+                if (db.Вольер.Any(av => av.Тип == this.habitat && av.Статус == "Не занят"))
                 {
                     cbChangeAviary.Enabled = true;
+                }
+                else
+                {
+                    cbChangeAviary.Text += " (нет свободных вольеров с этим типом среды обитания)";
                 }
             }
             nudAge.Value = animal.Возраст;
@@ -230,8 +235,6 @@ namespace ZooPark.cmAnimalForms
             this.height = Convert.ToInt32(tbHeight.Text.Trim());
         }
 
-       
-
-       
+      
     }
 }

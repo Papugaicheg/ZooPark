@@ -47,6 +47,8 @@
             this.weightLb = new System.Windows.Forms.Label();
             this.AgeLb = new System.Windows.Forms.Label();
             this.cbChangeAviary = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpReceipt = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAge)).BeginInit();
             this.SuspendLayout();
@@ -54,19 +56,17 @@
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(488, 34);
-            this.lbName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbName.Location = new System.Drawing.Point(244, 18);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(219, 25);
+            this.lbName.Size = new System.Drawing.Size(114, 13);
             this.lbName.TabIndex = 0;
             this.lbName.Text = "Название животного";
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(24, 31);
-            this.tbName.Margin = new System.Windows.Forms.Padding(6);
+            this.tbName.Location = new System.Drawing.Point(12, 16);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(414, 31);
+            this.tbName.Size = new System.Drawing.Size(209, 20);
             this.tbName.TabIndex = 1;
             this.tbName.Validating += new System.ComponentModel.CancelEventHandler(this.tbName_Validating);
             this.tbName.Validated += new System.EventHandler(this.tbName_Validated);
@@ -74,38 +74,34 @@
             // cbAviary
             // 
             this.cbAviary.FormattingEnabled = true;
-            this.cbAviary.Location = new System.Drawing.Point(24, 200);
-            this.cbAviary.Margin = new System.Windows.Forms.Padding(6);
+            this.cbAviary.Location = new System.Drawing.Point(12, 104);
             this.cbAviary.Name = "cbAviary";
-            this.cbAviary.Size = new System.Drawing.Size(414, 33);
+            this.cbAviary.Size = new System.Drawing.Size(209, 21);
             this.cbAviary.TabIndex = 2;
             // 
             // lbAviary
             // 
             this.lbAviary.AutoSize = true;
-            this.lbAviary.Location = new System.Drawing.Point(488, 203);
-            this.lbAviary.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbAviary.Location = new System.Drawing.Point(244, 106);
             this.lbAviary.Name = "lbAviary";
-            this.lbAviary.Size = new System.Drawing.Size(153, 25);
+            this.lbAviary.Size = new System.Drawing.Size(80, 13);
             this.lbAviary.TabIndex = 3;
             this.lbAviary.Text = "Новый вольер";
             // 
             // lbHabitat
             // 
             this.lbHabitat.AutoSize = true;
-            this.lbHabitat.Location = new System.Drawing.Point(488, 453);
-            this.lbHabitat.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbHabitat.Location = new System.Drawing.Point(244, 236);
             this.lbHabitat.Name = "lbHabitat";
-            this.lbHabitat.Size = new System.Drawing.Size(216, 25);
+            this.lbHabitat.Size = new System.Drawing.Size(111, 13);
             this.lbHabitat.TabIndex = 5;
             this.lbHabitat.Text = "Тип среды обитания";
             // 
             // UpdateAnimalButton
             // 
-            this.UpdateAnimalButton.Location = new System.Drawing.Point(15, 520);
-            this.UpdateAnimalButton.Margin = new System.Windows.Forms.Padding(6);
+            this.UpdateAnimalButton.Location = new System.Drawing.Point(12, 301);
             this.UpdateAnimalButton.Name = "UpdateAnimalButton";
-            this.UpdateAnimalButton.Size = new System.Drawing.Size(374, 62);
+            this.UpdateAnimalButton.Size = new System.Drawing.Size(187, 32);
             this.UpdateAnimalButton.TabIndex = 6;
             this.UpdateAnimalButton.Text = "Изменить";
             this.UpdateAnimalButton.UseVisualStyleBackColor = true;
@@ -114,10 +110,9 @@
             // CancelUpdateAnimalButton
             // 
             this.CancelUpdateAnimalButton.CausesValidation = false;
-            this.CancelUpdateAnimalButton.Location = new System.Drawing.Point(431, 516);
-            this.CancelUpdateAnimalButton.Margin = new System.Windows.Forms.Padding(6);
+            this.CancelUpdateAnimalButton.Location = new System.Drawing.Point(220, 299);
             this.CancelUpdateAnimalButton.Name = "CancelUpdateAnimalButton";
-            this.CancelUpdateAnimalButton.Size = new System.Drawing.Size(374, 65);
+            this.CancelUpdateAnimalButton.Size = new System.Drawing.Size(187, 34);
             this.CancelUpdateAnimalButton.TabIndex = 7;
             this.CancelUpdateAnimalButton.Text = "Отмена";
             this.CancelUpdateAnimalButton.UseVisualStyleBackColor = true;
@@ -126,28 +121,25 @@
             // tbHabitat
             // 
             this.tbHabitat.Enabled = false;
-            this.tbHabitat.Location = new System.Drawing.Point(24, 450);
-            this.tbHabitat.Margin = new System.Windows.Forms.Padding(6);
+            this.tbHabitat.Location = new System.Drawing.Point(12, 234);
             this.tbHabitat.Name = "tbHabitat";
-            this.tbHabitat.Size = new System.Drawing.Size(414, 31);
+            this.tbHabitat.Size = new System.Drawing.Size(209, 20);
             this.tbHabitat.TabIndex = 8;
             // 
             // tbCurrentAviary
             // 
             this.tbCurrentAviary.Enabled = false;
-            this.tbCurrentAviary.Location = new System.Drawing.Point(24, 93);
-            this.tbCurrentAviary.Margin = new System.Windows.Forms.Padding(6);
+            this.tbCurrentAviary.Location = new System.Drawing.Point(12, 48);
             this.tbCurrentAviary.Name = "tbCurrentAviary";
-            this.tbCurrentAviary.Size = new System.Drawing.Size(414, 31);
+            this.tbCurrentAviary.Size = new System.Drawing.Size(209, 20);
             this.tbCurrentAviary.TabIndex = 9;
             // 
             // lbCurrentAviary
             // 
             this.lbCurrentAviary.AutoSize = true;
-            this.lbCurrentAviary.Location = new System.Drawing.Point(488, 96);
-            this.lbCurrentAviary.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbCurrentAviary.Location = new System.Drawing.Point(244, 50);
             this.lbCurrentAviary.Name = "lbCurrentAviary";
-            this.lbCurrentAviary.Size = new System.Drawing.Size(176, 25);
+            this.lbCurrentAviary.Size = new System.Drawing.Size(91, 13);
             this.lbCurrentAviary.TabIndex = 10;
             this.lbCurrentAviary.Text = "Текущий вольер";
             // 
@@ -157,9 +149,10 @@
             // 
             // tbHeight
             // 
-            this.tbHeight.Location = new System.Drawing.Point(24, 388);
+            this.tbHeight.Location = new System.Drawing.Point(12, 202);
+            this.tbHeight.Margin = new System.Windows.Forms.Padding(2);
             this.tbHeight.Name = "tbHeight";
-            this.tbHeight.Size = new System.Drawing.Size(414, 31);
+            this.tbHeight.Size = new System.Drawing.Size(209, 20);
             this.tbHeight.TabIndex = 11;
             this.tbHeight.Validating += new System.ComponentModel.CancelEventHandler(this.tbHeight_Validating);
             this.tbHeight.Validated += new System.EventHandler(this.tbHeight_Validated);
@@ -167,30 +160,33 @@
             // lbHeight
             // 
             this.lbHeight.AutoSize = true;
-            this.lbHeight.Location = new System.Drawing.Point(488, 391);
+            this.lbHeight.Location = new System.Drawing.Point(244, 203);
+            this.lbHeight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbHeight.Name = "lbHeight";
-            this.lbHeight.Size = new System.Drawing.Size(97, 25);
+            this.lbHeight.Size = new System.Drawing.Size(51, 13);
             this.lbHeight.TabIndex = 12;
             this.lbHeight.Text = "Рост, см";
             // 
             // nudAge
             // 
-            this.nudAge.Location = new System.Drawing.Point(24, 264);
+            this.nudAge.Location = new System.Drawing.Point(12, 137);
+            this.nudAge.Margin = new System.Windows.Forms.Padding(2);
             this.nudAge.Maximum = new decimal(new int[] {
             200,
             0,
             0,
             0});
             this.nudAge.Name = "nudAge";
-            this.nudAge.Size = new System.Drawing.Size(414, 31);
+            this.nudAge.Size = new System.Drawing.Size(209, 20);
             this.nudAge.TabIndex = 13;
             this.nudAge.ValueChanged += new System.EventHandler(this.nudAge_ValueChanged);
             // 
             // tbWeight
             // 
-            this.tbWeight.Location = new System.Drawing.Point(24, 326);
+            this.tbWeight.Location = new System.Drawing.Point(12, 170);
+            this.tbWeight.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight.Name = "tbWeight";
-            this.tbWeight.Size = new System.Drawing.Size(414, 31);
+            this.tbWeight.Size = new System.Drawing.Size(209, 20);
             this.tbWeight.TabIndex = 14;
             this.tbWeight.Validating += new System.ComponentModel.CancelEventHandler(this.tbWeight_Validating);
             this.tbWeight.Validated += new System.EventHandler(this.tbWeight_Validated);
@@ -198,37 +194,59 @@
             // weightLb
             // 
             this.weightLb.AutoSize = true;
-            this.weightLb.Location = new System.Drawing.Point(488, 329);
+            this.weightLb.Location = new System.Drawing.Point(244, 171);
+            this.weightLb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.weightLb.Name = "weightLb";
-            this.weightLb.Size = new System.Drawing.Size(80, 25);
+            this.weightLb.Size = new System.Drawing.Size(43, 13);
             this.weightLb.TabIndex = 15;
             this.weightLb.Text = "Вес, кг";
             // 
             // AgeLb
             // 
             this.AgeLb.AutoSize = true;
-            this.AgeLb.Location = new System.Drawing.Point(488, 266);
+            this.AgeLb.Location = new System.Drawing.Point(244, 138);
+            this.AgeLb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AgeLb.Name = "AgeLb";
-            this.AgeLb.Size = new System.Drawing.Size(94, 25);
+            this.AgeLb.Size = new System.Drawing.Size(49, 13);
             this.AgeLb.TabIndex = 16;
             this.AgeLb.Text = "Возраст";
             // 
             // cbChangeAviary
             // 
             this.cbChangeAviary.AutoSize = true;
-            this.cbChangeAviary.Location = new System.Drawing.Point(24, 149);
+            this.cbChangeAviary.Location = new System.Drawing.Point(12, 77);
+            this.cbChangeAviary.Margin = new System.Windows.Forms.Padding(2);
             this.cbChangeAviary.Name = "cbChangeAviary";
-            this.cbChangeAviary.Size = new System.Drawing.Size(198, 29);
+            this.cbChangeAviary.Size = new System.Drawing.Size(104, 17);
             this.cbChangeAviary.TabIndex = 17;
             this.cbChangeAviary.Text = "Смена вольера";
             this.cbChangeAviary.UseVisualStyleBackColor = true;
             this.cbChangeAviary.CheckStateChanged += new System.EventHandler(this.cbChangeAviary_CheckedStateChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(244, 270);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Дата поступления";
+            // 
+            // dtpReceipt
+            // 
+            this.dtpReceipt.Enabled = false;
+            this.dtpReceipt.Location = new System.Drawing.Point(12, 268);
+            this.dtpReceipt.Name = "dtpReceipt";
+            this.dtpReceipt.Size = new System.Drawing.Size(209, 20);
+            this.dtpReceipt.TabIndex = 20;
+            // 
             // UpdateAnimalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 602);
+            this.ClientSize = new System.Drawing.Size(416, 345);
+            this.Controls.Add(this.dtpReceipt);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cbChangeAviary);
             this.Controls.Add(this.AgeLb);
             this.Controls.Add(this.weightLb);
@@ -246,7 +264,6 @@
             this.Controls.Add(this.cbAviary);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lbName);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "UpdateAnimalForm";
             this.Text = "UpdateAnimalForm";
             this.Load += new System.EventHandler(this.UpdateAnimalForm_Load);
@@ -277,5 +294,7 @@
         private System.Windows.Forms.TextBox tbWeight;
         private System.Windows.Forms.NumericUpDown nudAge;
         private System.Windows.Forms.CheckBox cbChangeAviary;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dtpReceipt;
     }
 }

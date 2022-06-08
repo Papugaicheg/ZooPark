@@ -59,6 +59,7 @@ namespace ZooPark
 
         private void cmUpdateAviaryCheck_Click(object sender, EventArgs e)
         {
+
             if (dgAviaryCheck.SelectedCells.Count > 0)
             {
                 var i = dgAviaryCheck.SelectedCells[0].OwningRow.Index;
@@ -71,7 +72,7 @@ namespace ZooPark
                         UpdateAviaryCheckForm form = new UpdateAviaryCheckForm(id,loggedID);
                         if (form.ShowDialog() == DialogResult.OK)
                         {
-                            SetDiseaseGrid();
+                            SetAviaryCheckGrid();
                         }
                     }
                     else
@@ -85,7 +86,32 @@ namespace ZooPark
 
         private void cmAddAviaryCheck_Click(object sender, EventArgs e)
         {
+            using (var db = new ZooparkModel())
+            {
+                int[] posts = { 4, 6 };
+                if (db.Сотрудник.Any(emp => (posts.Contains(emp.Должность) && emp.Дата_увольнения == null)))
+                {
+                    if (db.Сотрудник.Any(emp => emp.ID == loggedID && posts.Contains(emp.Должность)))
+                    {
+                        AddAviaryCheckForm form = new AddAviaryCheckForm(loggedID);
+                        if (form.ShowDialog() == DialogResult.OK)
+                        {
+                            SetAviaryCheckGrid();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вы можете только просматривать данную таблицу!", "Ошибка", MessageBoxButtons.OK);
+                        DialogResult = DialogResult.None;
+                    }
 
+                }
+                else
+                {
+                    MessageBox.Show("В нашем зоопарке нет сотрудников, которые могли бы провести осмотр!", "Ошибка", MessageBoxButtons.OK);
+                    DialogResult = DialogResult.None;
+                }
+            }
         }
 
        
@@ -97,7 +123,29 @@ namespace ZooPark
 
         private void cmDeleteAviaryCheck_Click(object sender, EventArgs e)
         {
+            if (dgAviaryCheck.SelectedCells.Count > 0)
+            {
+                var i = dgAviaryCheck.SelectedCells[0].OwningRow.Index;
+                int recordID = (int)dgAviaryCheck[0, i].Value;
+                DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?",
+                    "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
 
+
+                    using (var db = new ZooparkModel())
+                    {
+                         Проверка_вольеров record = db.Проверка_вольеров.Where(item => item.ID == recordID).First();
+                        db.Проверка_вольеров.Remove(record);
+
+                        db.SaveChanges();
+
+
+
+                    }
+                }
+            }
+            SetAviaryCheckGrid();
         }
 
     }

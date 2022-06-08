@@ -11,7 +11,7 @@ namespace ZooPark
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Заболевание()
         {
-            Болезнь = new HashSet<Болезнь>();
+            Животное = new HashSet<Животное>();
         }
 
         public int ID { get; set; }
@@ -27,6 +27,6 @@ namespace ZooPark
         public string Описание { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Болезнь> Болезнь { get; set; }
+        public virtual ICollection<Животное> Животное { get; set; }
     }
 }

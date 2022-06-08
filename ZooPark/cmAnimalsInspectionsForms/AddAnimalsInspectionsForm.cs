@@ -14,6 +14,7 @@ namespace ZooPark.cmAnimalsInspectionsForms
     {
         private int idEmp;
         private string comment;
+        private DateTime receiptDate;
         public AddAnimalsInspectionsForm(int id)
         {
             InitializeComponent();
@@ -24,10 +25,10 @@ namespace ZooPark.cmAnimalsInspectionsForms
         {
             using (var db = new ZooparkModel())
             {
-
+               
                 InspectionDatePicker.MaxDate = db.Сотрудник.Where(rec=>rec.ID==idEmp).First().Дата_увольнения ?? DateTime.Today;
                 InspectionDatePicker.MinDate = db.Сотрудник.Where(rec => rec.ID == idEmp).First().Дата_приема;
-
+                
                 var emp = db.Сотрудник.Where(em => em.ID == idEmp).First();
                 tbEmployee.Text =  emp.ID + " " + emp.Фамилия + ' ' + emp.Имя + ' ' + emp.Отчество;
                 if (db.Животное.Any()) { 
@@ -55,6 +56,7 @@ namespace ZooPark.cmAnimalsInspectionsForms
                               };
                 var animalsList = new List<String>();
                 animals.ToList().ForEach(animal => { animalsList.Add(animal.ID + " - " + animal.Название); });
+                
                 return animalsList;
             }
         }
@@ -135,8 +137,16 @@ namespace ZooPark.cmAnimalsInspectionsForms
                 MessageBox.Show("Ошибка в данных!", "Ошибка", MessageBoxButtons.OK);
             }
         }
-      
 
+        private void cbAnimal_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int  animalID = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
+            using(var db = new ZooparkModel())
+            {
+                this.receiptDate = db.Животное.Where(an => an.ID == animalID).First().Дата_поступления;
 
+            }
+            InspectionDatePicker.MinDate = receiptDate;
+        }
     }
 }

@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.tbEmployee = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbAviary = new System.Windows.Forms.TextBox();
             this.aviaryLb = new System.Windows.Forms.Label();
             this.dtpAviaryCheck = new System.Windows.Forms.DateTimePicker();
             this.checkDateLb = new System.Windows.Forms.Label();
             this.countLb = new System.Windows.Forms.Label();
-            this.btUpdateInspection = new System.Windows.Forms.Button();
+            this.btUpdateAviaryCheck = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tbComment = new System.Windows.Forms.TextBox();
@@ -61,13 +61,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Сотрудник выполняющий проверку";
             // 
-            // textBox1
+            // tbAviary
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(12, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(239, 20);
-            this.textBox1.TabIndex = 2;
+            this.tbAviary.Enabled = false;
+            this.tbAviary.Location = new System.Drawing.Point(12, 51);
+            this.tbAviary.Name = "tbAviary";
+            this.tbAviary.Size = new System.Drawing.Size(239, 20);
+            this.tbAviary.TabIndex = 2;
             // 
             // aviaryLb
             // 
@@ -102,14 +102,15 @@
             this.countLb.Size = new System.Drawing.Size(0, 13);
             this.countLb.TabIndex = 17;
             // 
-            // btUpdateInspection
+            // btUpdateAviaryCheck
             // 
-            this.btUpdateInspection.Location = new System.Drawing.Point(12, 256);
-            this.btUpdateInspection.Name = "btUpdateInspection";
-            this.btUpdateInspection.Size = new System.Drawing.Size(192, 40);
-            this.btUpdateInspection.TabIndex = 16;
-            this.btUpdateInspection.Text = "Изменить";
-            this.btUpdateInspection.UseVisualStyleBackColor = true;
+            this.btUpdateAviaryCheck.Location = new System.Drawing.Point(12, 256);
+            this.btUpdateAviaryCheck.Name = "btUpdateAviaryCheck";
+            this.btUpdateAviaryCheck.Size = new System.Drawing.Size(192, 40);
+            this.btUpdateAviaryCheck.TabIndex = 16;
+            this.btUpdateAviaryCheck.Text = "Изменить";
+            this.btUpdateAviaryCheck.UseVisualStyleBackColor = true;
+            this.btUpdateAviaryCheck.Click += new System.EventHandler(this.btUpdateAviaryCheck_Click);
             // 
             // btCancel
             // 
@@ -150,16 +151,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(498, 317);
             this.Controls.Add(this.countLb);
-            this.Controls.Add(this.btUpdateInspection);
+            this.Controls.Add(this.btUpdateAviaryCheck);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbComment);
             this.Controls.Add(this.checkDateLb);
             this.Controls.Add(this.dtpAviaryCheck);
             this.Controls.Add(this.aviaryLb);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbAviary);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbEmployee);
             this.Name = "UpdateAviaryCheckForm";
@@ -175,12 +176,12 @@
 
         private System.Windows.Forms.TextBox tbEmployee;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbAviary;
         private System.Windows.Forms.Label aviaryLb;
         private System.Windows.Forms.DateTimePicker dtpAviaryCheck;
         private System.Windows.Forms.Label checkDateLb;
         private System.Windows.Forms.Label countLb;
-        private System.Windows.Forms.Button btUpdateInspection;
+        private System.Windows.Forms.Button btUpdateAviaryCheck;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbComment;

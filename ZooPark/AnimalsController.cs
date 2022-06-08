@@ -60,8 +60,7 @@ namespace ZooPark
         {
             using(var db = new ZooparkModel())
             {
-                bool check = db.Вольер.Any(av => av.Статус == "Не занят");
-                if (check)
+                if (db.Вольер.Any(av => av.Статус == "Не занят"))
                 {
                     AddAnimalForm form = new AddAnimalForm();
                     if (form.ShowDialog() == DialogResult.OK)
@@ -153,7 +152,8 @@ namespace ZooPark
                                   "\nВозраст: " + suffix +
                                   "\nВес: " + animal.Вес + " кг" +
                                   "\nРост: " + animal.Рост + " см" +
-                                  "\nТип среды обитания: " + animal.Тип_среды_обитания;
+                                  "\nТип среды обитания: " + animal.Тип_среды_обитания+
+                                  "\nДата поступления: " + animal.Дата_поступления.ToShortDateString(); 
                     MessageBox.Show(info, "Дополнительная информация", MessageBoxButtons.OK);
 
                 }

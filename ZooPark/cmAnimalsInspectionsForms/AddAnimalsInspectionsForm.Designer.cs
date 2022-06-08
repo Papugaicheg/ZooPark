@@ -136,6 +136,7 @@
             this.cbAnimal.Name = "cbAnimal";
             this.cbAnimal.Size = new System.Drawing.Size(200, 21);
             this.cbAnimal.TabIndex = 13;
+            this.cbAnimal.SelectionChangeCommitted += new System.EventHandler(this.cbAnimal_SelectionChangeCommitted);
             // 
             // tbEmployee
             // 

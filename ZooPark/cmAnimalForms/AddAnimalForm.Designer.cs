@@ -44,6 +44,8 @@
             this.nudAge = new System.Windows.Forms.NumericUpDown();
             this.lbHeight = new System.Windows.Forms.Label();
             this.tbHeight = new System.Windows.Forms.TextBox();
+            this.dtpReceipt = new System.Windows.Forms.DateTimePicker();
+            this.receiptDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAge)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +53,7 @@
             // CancelAddAnimalButton
             // 
             this.CancelAddAnimalButton.CausesValidation = false;
-            this.CancelAddAnimalButton.Location = new System.Drawing.Point(249, 215);
+            this.CancelAddAnimalButton.Location = new System.Drawing.Point(249, 258);
             this.CancelAddAnimalButton.Name = "CancelAddAnimalButton";
             this.CancelAddAnimalButton.Size = new System.Drawing.Size(209, 32);
             this.CancelAddAnimalButton.TabIndex = 17;
@@ -61,7 +63,7 @@
             // 
             // AddAnimalButton
             // 
-            this.AddAnimalButton.Location = new System.Drawing.Point(12, 215);
+            this.AddAnimalButton.Location = new System.Drawing.Point(12, 258);
             this.AddAnimalButton.Name = "AddAnimalButton";
             this.AddAnimalButton.Size = new System.Drawing.Size(209, 32);
             this.AddAnimalButton.TabIndex = 16;
@@ -123,7 +125,7 @@
             this.cbHabitat.Name = "cbHabitat";
             this.cbHabitat.Size = new System.Drawing.Size(245, 21);
             this.cbHabitat.TabIndex = 18;
-            this.cbHabitat.SelectedValueChanged += new System.EventHandler(this.cbHabitat_SelectedValueChanged);
+            this.cbHabitat.SelectionChangeCommitted += new System.EventHandler(this.cbHabitat_SelectedValueChanged);
             this.cbHabitat.Validated += new System.EventHandler(this.cbHabitat_Validated);
             // 
             // errorProvider
@@ -153,7 +155,7 @@
             // tbWeight
             // 
             this.tbWeight.Location = new System.Drawing.Point(12, 149);
-            this.tbWeight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbWeight.Margin = new System.Windows.Forms.Padding(2);
             this.tbWeight.Name = "tbWeight";
             this.tbWeight.Size = new System.Drawing.Size(245, 20);
             this.tbWeight.TabIndex = 32;
@@ -163,7 +165,7 @@
             // nudAge
             // 
             this.nudAge.Location = new System.Drawing.Point(12, 115);
-            this.nudAge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudAge.Margin = new System.Windows.Forms.Padding(2);
             this.nudAge.Maximum = new decimal(new int[] {
             200,
             0,
@@ -172,6 +174,7 @@
             this.nudAge.Name = "nudAge";
             this.nudAge.Size = new System.Drawing.Size(243, 20);
             this.nudAge.TabIndex = 31;
+            this.nudAge.ValueChanged += new System.EventHandler(this.nudAge_ValueChanged);
             // 
             // lbHeight
             // 
@@ -186,18 +189,38 @@
             // tbHeight
             // 
             this.tbHeight.Location = new System.Drawing.Point(12, 183);
-            this.tbHeight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbHeight.Margin = new System.Windows.Forms.Padding(2);
             this.tbHeight.Name = "tbHeight";
             this.tbHeight.Size = new System.Drawing.Size(245, 20);
             this.tbHeight.TabIndex = 29;
             this.tbHeight.Validating += new System.ComponentModel.CancelEventHandler(this.tbHeight_Validating);
             this.tbHeight.Validated += new System.EventHandler(this.tbHeight_Validated);
             // 
+            // dtpReceipt
+            // 
+            this.dtpReceipt.Location = new System.Drawing.Point(12, 217);
+            this.dtpReceipt.Name = "dtpReceipt";
+            this.dtpReceipt.Size = new System.Drawing.Size(245, 20);
+            this.dtpReceipt.TabIndex = 35;
+            this.dtpReceipt.Validated += new System.EventHandler(this.dtpReceipt_Validated);
+            // 
+            // receiptDate
+            // 
+            this.receiptDate.AutoSize = true;
+            this.receiptDate.Location = new System.Drawing.Point(287, 220);
+            this.receiptDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.receiptDate.Name = "receiptDate";
+            this.receiptDate.Size = new System.Drawing.Size(100, 13);
+            this.receiptDate.TabIndex = 36;
+            this.receiptDate.Text = "Дата поступления";
+            // 
             // AddAnimalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 262);
+            this.ClientSize = new System.Drawing.Size(470, 302);
+            this.Controls.Add(this.receiptDate);
+            this.Controls.Add(this.dtpReceipt);
             this.Controls.Add(this.AgeLb);
             this.Controls.Add(this.weightLb);
             this.Controls.Add(this.tbWeight);
@@ -238,5 +261,7 @@
         private System.Windows.Forms.NumericUpDown nudAge;
         private System.Windows.Forms.Label lbHeight;
         private System.Windows.Forms.TextBox tbHeight;
+        private System.Windows.Forms.Label receiptDate;
+        private System.Windows.Forms.DateTimePicker dtpReceipt;
     }
 }

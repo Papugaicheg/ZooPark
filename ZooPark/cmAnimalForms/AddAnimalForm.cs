@@ -19,7 +19,7 @@ namespace ZooPark.cmAnimalForms
         private double weight;
         private int height;
         private string habitat; //50
-        
+        private DateTime dateReceipt;
         public AddAnimalForm()
         {
             InitializeComponent();
@@ -44,7 +44,24 @@ namespace ZooPark.cmAnimalForms
         {
             using (var db = new ZooparkModel())
             {
+                // 
+                var aviaries = from aviary in db.Вольер.Where(av => av.Статус == "Не занят" && av.Тип == cbHabitat.SelectedItem.ToString())
+                               select new
+                               {
+                                   Номер = aviary.ID,
+                                   Статус = aviary.Статус
 
+                               };
+                var aviaryList = new List<String>();
+                aviaries.ToList().ForEach(aviary => { aviaryList.Add("№ " + aviary.Номер.ToString() + " - " + aviary.Статус); });
+                return aviaryList;
+            }
+        }
+        private List<string> GetAviaryForHabitat()
+        {
+            using (var db = new ZooparkModel())
+            {
+                //
                 var aviaries = from aviary in db.Вольер.Where(av => av.Статус == "Не занят" && av.Тип == cbHabitat.SelectedItem.ToString())
                                select new
                                {
@@ -61,8 +78,28 @@ namespace ZooPark.cmAnimalForms
         private void AddAnimalForm_Load(object sender, EventArgs e)
         {
             this.Text = "Добавление животного";
-            cbHabitat.DataSource = GetHabitat();
-            cbAviary.DataSource = GetAviary();
+            if(GetHabitat().Count != 0)
+            {
+                cbHabitat.DataSource = GetHabitat();
+            }
+            else
+            {
+                AddAnimalButton.Enabled = false;
+                MessageBox.Show("Нет существующих вольеров!", "Добавлено", MessageBoxButtons.OK);
+                this.Close();
+            }
+
+            if (GetAviary().Count != 0)
+            {
+                cbAviary.DataSource = GetAviary();
+
+            }
+            else
+            {
+                AddAnimalButton.Enabled = false;
+                cbAviary.Enabled = false;
+            }
+            dtpReceipt.MaxDate = DateTime.Today;
         }
 
 
@@ -80,7 +117,8 @@ namespace ZooPark.cmAnimalForms
                         Возраст = Convert.ToInt32(nudAge.Value),
                         Вес = this.weight,
                         Рост = this.height,
-                        Тип_среды_обитания = this.habitat
+                        Тип_среды_обитания = this.habitat,
+                        Дата_поступления = this.dateReceipt
                     });
 
 
@@ -90,9 +128,9 @@ namespace ZooPark.cmAnimalForms
 
                 MessageBox.Show("Данные Добавлены!", "Добавлено", MessageBoxButtons.OK);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Ошибка в данных!\n"+ "Вольер - "+this.aviary+ "\nНазвание - "+this.name+"\nType - "+this.habitat  +"\n"+ex.Message, "Ошибка", MessageBoxButtons.OK);
+                MessageBox.Show("Ошибка в данных!", "Ошибка", MessageBoxButtons.OK);
             }
         }
 
@@ -162,16 +200,19 @@ namespace ZooPark.cmAnimalForms
         {
             using(var db = new ZooparkModel())
             {
-                bool check = db.Вольер.Any(av => av.Тип == cbHabitat.SelectedItem.ToString() && av.Статус == "Не занят");
-                if (check)
+                if (db.Вольер.Any(av => av.Тип == cbHabitat.SelectedItem.ToString() && av.Статус == "Не занят"))
                 {
                     cbAviary.Enabled = true;
+                    AddAnimalButton.Enabled = true;
                     cbAviary.DataSource = GetAviary();
+
+                    
                 }
                 else
                 {
-                    MessageBox.Show("Невозможно добавить новое животное с данной средой обитания, так как нет свободных вольеров такого типа", "Уведомление", MessageBoxButtons.OK);
+                    MessageBox.Show("Невозможно добавить животное с этим типом среды обитания, так как нет для него свободных вольеров!", "Уведомление", MessageBoxButtons.OK);
                     cbAviary.Enabled = false;
+                    AddAnimalButton.Enabled = false;
                 }
             }
             
@@ -230,8 +271,22 @@ namespace ZooPark.cmAnimalForms
             this.height = Convert.ToInt32(tbHeight.Text.Trim());
         }
 
+        private void dtpReceipt_Validated(object sender, EventArgs e)
+        {
+            this.dateReceipt = dtpReceipt.Value;
+        }
 
 
-
+        private void nudAge_ValueChanged(object sender, EventArgs e)
+        {
+            int age = Convert.ToInt32(nudAge.Value);
+            if (age == 0) { 
+            dtpReceipt.MinDate = DateTime.Today.AddYears(age);
+            }
+            else
+            {
+                dtpReceipt.MinDate = DateTime.Today.AddYears(-1).AddDays(-1);
+            }
+        }
     }
 }
