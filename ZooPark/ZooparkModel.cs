@@ -12,16 +12,16 @@ namespace ZooPark
         {
         }
 
-        public virtual DbSet<Болезнь> Болезнь { get; set; }
         public virtual DbSet<Вольер> Вольер { get; set; }
         public virtual DbSet<Должность> Должность { get; set; }
         public virtual DbSet<Животное> Животное { get; set; }
+        public virtual DbSet<Журнал_болезней> Журнал_болезней { get; set; }
         public virtual DbSet<Журнал_осмотров> Журнал_осмотров { get; set; }
         public virtual DbSet<Журнал_прививок> Журнал_прививок { get; set; }
         public virtual DbSet<Заболевание> Заболевание { get; set; }
+        public virtual DbSet<Прививка> Прививка { get; set; }
         public virtual DbSet<Проверка_вольеров> Проверка_вольеров { get; set; }
         public virtual DbSet<Сотрудник> Сотрудник { get; set; }
-        public virtual DbSet<Тип> Тип { get; set; }
         public virtual DbSet<Учетные_записи> Учетные_записи { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -69,7 +69,7 @@ namespace ZooPark
                 .IsUnicode(false);
 
             modelBuilder.Entity<Животное>()
-                .HasMany(e => e.Болезнь)
+                .HasMany(e => e.Журнал_болезней)
                 .WithRequired(e => e.Животное1)
                 .HasForeignKey(e => e.Животное)
                 .WillCascadeOnDelete(false);
@@ -103,9 +103,23 @@ namespace ZooPark
                 .IsUnicode(false);
 
             modelBuilder.Entity<Заболевание>()
-                .HasMany(e => e.Болезнь)
+                .HasMany(e => e.Журнал_болезней)
                 .WithRequired(e => e.Заболевание1)
                 .HasForeignKey(e => e.Заболевание)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Прививка>()
+                .Property(e => e.Код)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Прививка>()
+                .Property(e => e.Название)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Прививка>()
+                .HasMany(e => e.Журнал_прививок)
+                .WithRequired(e => e.Прививка1)
+                .HasForeignKey(e => e.Прививка)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Проверка_вольеров>()
@@ -162,20 +176,6 @@ namespace ZooPark
                 .HasMany(e => e.Учетные_записи)
                 .WithRequired(e => e.Сотрудник)
                 .HasForeignKey(e => e.Employee)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Тип>()
-                .Property(e => e.Код)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Тип>()
-                .Property(e => e.Название)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Тип>()
-                .HasMany(e => e.Журнал_прививок)
-                .WithRequired(e => e.Тип1)
-                .HasForeignKey(e => e.Тип)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Учетные_записи>()

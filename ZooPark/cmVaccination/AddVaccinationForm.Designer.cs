@@ -86,7 +86,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 31;
-            this.label3.Text = "Тип";
+            this.label3.Text = "Прививка";
             // 
             // DateInspectionLb
             // 

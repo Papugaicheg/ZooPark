@@ -112,9 +112,9 @@ namespace ZooPark
                            var list = db.Журнал_прививок.Where(item => item.Животное == animalID);
                             db.Журнал_прививок.RemoveRange(list);
                         }
-                        if (db.Болезнь.Any(item => item.Животное == animalID)) {
-                            var list = db.Болезнь.Where(item => item.Животное == animalID);
-                            db.Болезнь.RemoveRange(list);
+                        if (db.Журнал_болезней.Any(item => item.Животное == animalID)) {
+                            var list = db.Журнал_болезней.Where(item => item.Животное == animalID);
+                            db.Журнал_болезней.RemoveRange(list);
                         }
                         if (db.Журнал_осмотров.Any(item => item.Животное == animalID)) {
                             var list = db.Журнал_осмотров.Where(item => item.Животное == animalID);

@@ -60,9 +60,9 @@ namespace ZooPark.cmDiseaseForm
                 {
                     int animal = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
                     int disease = Convert.ToInt32(cbDisease.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
-                    if (!db.Болезнь.Any(d => d.Заболевание == disease && d.Животное == animal))
+                    if (!db.Журнал_болезней.Any(d => d.Заболевание == disease && d.Животное == animal))
                     {
-                        db.Болезнь.Add(new Болезнь
+                        db.Журнал_болезней.Add(new Журнал_болезней
                         {
 
                             Животное = animal,

@@ -67,6 +67,7 @@
             this.cmAddDisease = new System.Windows.Forms.ToolStripMenuItem();
             this.cmRefreshDisease = new System.Windows.Forms.ToolStripMenuItem();
             this.cmDeleteDisease = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmMoreInfoAboutDisease = new System.Windows.Forms.ToolStripMenuItem();
             this.tabAviaryCheck = new System.Windows.Forms.TabPage();
             this.dgAviaryCheck = new System.Windows.Forms.DataGridView();
             this.cmAviaryCheck = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -398,7 +399,7 @@
             this.tabDisease.Name = "tabDisease";
             this.tabDisease.Size = new System.Drawing.Size(688, 327);
             this.tabDisease.TabIndex = 4;
-            this.tabDisease.Text = "Болезни";
+            this.tabDisease.Text = "Журнал болезней";
             this.tabDisease.UseVisualStyleBackColor = true;
             this.tabDisease.Enter += new System.EventHandler(this.tabDisease_Enter);
             // 
@@ -422,37 +423,45 @@
             this.cmUpdateDisease,
             this.cmAddDisease,
             this.cmRefreshDisease,
-            this.cmDeleteDisease});
+            this.cmDeleteDisease,
+            this.cmMoreInfoAboutDisease});
             this.cmDisease.Name = "cmDisease";
-            this.cmDisease.Size = new System.Drawing.Size(144, 92);
+            this.cmDisease.Size = new System.Drawing.Size(221, 136);
             // 
             // cmUpdateDisease
             // 
             this.cmUpdateDisease.Name = "cmUpdateDisease";
-            this.cmUpdateDisease.Size = new System.Drawing.Size(143, 22);
+            this.cmUpdateDisease.Size = new System.Drawing.Size(220, 22);
             this.cmUpdateDisease.Text = "Изменить";
             this.cmUpdateDisease.Click += new System.EventHandler(this.cmUpdateDisease_Click);
             // 
             // cmAddDisease
             // 
             this.cmAddDisease.Name = "cmAddDisease";
-            this.cmAddDisease.Size = new System.Drawing.Size(143, 22);
+            this.cmAddDisease.Size = new System.Drawing.Size(220, 22);
             this.cmAddDisease.Text = "Добавить";
             this.cmAddDisease.Click += new System.EventHandler(this.cmAddDisease_Click);
             // 
             // cmRefreshDisease
             // 
             this.cmRefreshDisease.Name = "cmRefreshDisease";
-            this.cmRefreshDisease.Size = new System.Drawing.Size(143, 22);
+            this.cmRefreshDisease.Size = new System.Drawing.Size(220, 22);
             this.cmRefreshDisease.Text = "Обновление";
             this.cmRefreshDisease.Click += new System.EventHandler(this.cmRefreshDisease_Click);
             // 
             // cmDeleteDisease
             // 
             this.cmDeleteDisease.Name = "cmDeleteDisease";
-            this.cmDeleteDisease.Size = new System.Drawing.Size(143, 22);
+            this.cmDeleteDisease.Size = new System.Drawing.Size(220, 22);
             this.cmDeleteDisease.Text = "Удалить";
             this.cmDeleteDisease.Click += new System.EventHandler(this.cmDeleteDisease_Click);
+            // 
+            // cmMoreInfoAboutDisease
+            // 
+            this.cmMoreInfoAboutDisease.Name = "cmMoreInfoAboutDisease";
+            this.cmMoreInfoAboutDisease.Size = new System.Drawing.Size(220, 22);
+            this.cmMoreInfoAboutDisease.Text = "Подробнее о заболевании";
+            this.cmMoreInfoAboutDisease.Click += new System.EventHandler(this.cmMoreInfoAboutDisease_Click);
             // 
             // tabAviaryCheck
             // 
@@ -599,6 +608,7 @@
         private System.Windows.Forms.ToolStripMenuItem cmAddAviaryCheck;
         private System.Windows.Forms.ToolStripMenuItem cmRefreshAviaryCheck;
         private System.Windows.Forms.ToolStripMenuItem cmDeleteAviaryCheck;
+        private System.Windows.Forms.ToolStripMenuItem cmMoreInfoAboutDisease;
     }
 }
 

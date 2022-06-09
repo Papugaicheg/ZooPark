@@ -38,7 +38,7 @@ namespace ZooPark.cmVaccination
                 this.date = record.Дата_прививки;
                 this.acceptDate = record.Сотрудник1.Дата_приема;
                 this.dismissDate = record.Сотрудник1.Дата_увольнения;
-                this.type = record.Тип;
+                this.type = record.Прививка;
             }
         }
 
@@ -74,7 +74,7 @@ namespace ZooPark.cmVaccination
             using (var db = new ZooparkModel())
             {
 
-                var types = from type in db.Тип
+                var types = from type in db.Прививка
                             select new
                             {
                                 ID = type.ID,
@@ -120,7 +120,7 @@ namespace ZooPark.cmVaccination
                     this.record.Сотрудник = this.employee;
                     this.record.Животное = this.animal;
                     this.record.Дата_прививки = VaccinationDatePicker.Value;
-                    this.record.Тип = Convert.ToInt32(cbType.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
+                    this.record.Прививка = Convert.ToInt32(cbType.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
 
 
 

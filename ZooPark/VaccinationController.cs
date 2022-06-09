@@ -23,7 +23,7 @@ namespace ZooPark
                                     vaccination.Сотрудник1.Фамилия,
                                     vaccination.Животное1.Название,
                                     vaccination.Дата_прививки,
-                                    Прививка = vaccination.Тип1.Название
+                                    Прививка = vaccination.Прививка1.Название
                                 };
                 return vaccinations.ToList();
             }
@@ -44,7 +44,7 @@ namespace ZooPark
             dgVaccinations.Columns[3].HeaderText = "Дата";
             dgVaccinations.Columns[3].Width = 80;
             dgVaccinations.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgVaccinations.Columns[4].HeaderText = "Тип";
+            dgVaccinations.Columns[4].HeaderText = "Прививка";
             dgVaccinations.Columns[4].Width = 200;
 
             dgVaccinations.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;

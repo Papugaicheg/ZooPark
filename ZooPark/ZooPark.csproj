@@ -190,16 +190,16 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZooparkModel.cs" />
-    <Compile Include="Болезнь.cs" />
     <Compile Include="Вольер.cs" />
     <Compile Include="Должность.cs" />
     <Compile Include="Животное.cs" />
+    <Compile Include="Журнал_болезней.cs" />
     <Compile Include="Журнал_осмотров.cs" />
     <Compile Include="Журнал_прививок.cs" />
     <Compile Include="Заболевание.cs" />
+    <Compile Include="Прививка.cs" />
     <Compile Include="Проверка_вольеров.cs" />
     <Compile Include="Сотрудник.cs" />
-    <Compile Include="Тип.cs" />
     <Compile Include="Учетные_записи.cs" />
     <EmbeddedResource Include="AddPassForm.resx">
       <DependentUpon>AddPassForm.cs</DependentUpon>

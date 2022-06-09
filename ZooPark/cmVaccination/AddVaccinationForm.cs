@@ -83,7 +83,7 @@ namespace ZooPark.cmVaccination
             using (var db = new ZooparkModel())
             {
 
-                var types = from type in db.Тип
+                var types = from type in db.Прививка
                             select new
                             {
                                 ID = type.ID,
@@ -119,7 +119,7 @@ namespace ZooPark.cmVaccination
                         Сотрудник = this.id,
                         Животное = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]),
                         Дата_прививки = VaccinationDatePicker.Value,
-                        Тип = Convert.ToInt32(cbType.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0])
+                        Прививка = Convert.ToInt32(cbType.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0])
                     });
 
 

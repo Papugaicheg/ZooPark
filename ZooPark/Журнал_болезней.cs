@@ -6,7 +6,8 @@ namespace ZooPark
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Болезнь
+    [Table("Журнал болезней")]
+    public partial class Журнал_болезней
     {
         public int ID { get; set; }
 

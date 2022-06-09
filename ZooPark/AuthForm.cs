@@ -33,8 +33,7 @@ namespace ZooPark
                     var user = db.Учетные_записи.Where(record => record.Login == tbLogin.Text).First();
                     if(user.Password == null)
                     {
-                       
-                           MessageBox.Show("Ого! Кажется вы наш новый сотрудник! Мы вам очень рады! Поэтому попросим вас придумать себе пароль для вашей учетной записи!" +
+                         MessageBox.Show("Ого! Кажется вы наш новый сотрудник! Мы вам очень рады! Поэтому попросим вас придумать себе пароль для вашей учетной записи!" +
                                            "\nС наилучшими пожеланиями, Ваш Администратор)", "Ошибка аутентификации", MessageBoxButtons.OK);
                         AddPassForm form = new AddPassForm(user);
                         if (form.ShowDialog() == DialogResult.OK)

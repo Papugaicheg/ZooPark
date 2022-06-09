@@ -18,12 +18,12 @@ namespace ZooPark
         [Column("Дата прививки", TypeName = "date")]
         public DateTime Дата_прививки { get; set; }
 
-        public int Тип { get; set; }
+        public int Прививка { get; set; }
 
         public virtual Животное Животное1 { get; set; }
 
-        public virtual Сотрудник Сотрудник1 { get; set; }
+        public virtual Прививка Прививка1 { get; set; }
 
-        public virtual Тип Тип1 { get; set; }
+        public virtual Сотрудник Сотрудник1 { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace ZooPark
             using (var db = new ZooparkModel())
             {
 
-                var posts = from post in db.Болезнь
+                var posts = from post in db.Журнал_болезней
                               select new
                               {
                                   ID = post.ID,
@@ -100,6 +100,26 @@ namespace ZooPark
             }
         }
 
+
+        private void cmMoreInfoAboutDisease_Click(object sender, EventArgs e)
+        {
+            if (dgDisease.SelectedCells.Count > 0)
+            {
+                var i = dgDisease.SelectedCells[0].OwningRow.Index;
+                int recordID = (int)dgDisease[0, i].Value;
+                 using(var db = new ZooparkModel())
+                {
+                    var record = db.Журнал_болезней.Where(rec => rec.ID == recordID).First();
+                    string aboutDisease = "Название: " + record.Заболевание1.Название +
+                                          "\nСимптомы: " + record.Заболевание1.Симптомы +
+                                          "\nОписание: " + record.Заболевание1.Описание;
+                    MessageBox.Show(aboutDisease, "Информация о болезни - " + record.Заболевание1.Название, MessageBoxButtons.OK);
+                }
+                
+            }
+            }
+
+
         private void cmRefreshDisease_Click(object sender, EventArgs e)
         {
             SetDiseaseGrid();
@@ -119,8 +139,8 @@ namespace ZooPark
 
                     using (var db = new ZooparkModel())
                     {
-                        Болезнь record = db.Болезнь.Where(item => item.ID == recordID).First();
-                        db.Болезнь.Remove(record);
+                        Журнал_болезней record = db.Журнал_болезней.Where(item => item.ID == recordID).First();
+                        db.Журнал_болезней.Remove(record);
 
                         db.SaveChanges();
 

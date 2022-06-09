@@ -12,7 +12,7 @@ namespace ZooPark.cmDiseaseForm
 {
     public partial class UpdateDiseaseForm : Form
     {
-        private Болезнь disease;
+        private Журнал_болезней disease;
         private int dID;
         private int recordID;
         private int animal;
@@ -23,7 +23,7 @@ namespace ZooPark.cmDiseaseForm
             this.recordID = id;
             using (var db = new ZooparkModel())
             {
-                this.disease = db.Болезнь.Where(x => x.ID == id).First();
+                this.disease = db.Журнал_болезней.Where(x => x.ID == id).First();
                 this.dID = disease.Заболевание;
                 this.animal = disease.Животное;
                 this.animalName = disease.Животное.ToString() + " " + disease.Животное1.Название;
@@ -94,7 +94,7 @@ namespace ZooPark.cmDiseaseForm
                 using (var db = new ZooparkModel())
                 {
                     Console.WriteLine(recordID);
-                    this.disease = db.Болезнь.Where(rec => rec.ID == recordID).First();
+                    this.disease = db.Журнал_болезней.Where(rec => rec.ID == recordID).First();
                     this.disease.Животное = this.animal;
                     this.disease.Заболевание = Convert.ToInt32(cbDisease.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
                     

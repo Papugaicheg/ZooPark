@@ -11,7 +11,7 @@ namespace ZooPark
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Животное()
         {
-            Болезнь = new HashSet<Болезнь>();
+            Журнал_болезней = new HashSet<Журнал_болезней>();
             Журнал_осмотров = new HashSet<Журнал_осмотров>();
             Журнал_прививок = new HashSet<Журнал_прививок>();
         }
@@ -38,10 +38,10 @@ namespace ZooPark
         [Column("Дата поступления", TypeName = "date")]
         public DateTime Дата_поступления { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Болезнь> Болезнь { get; set; }
-
         public virtual Вольер Вольер1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Журнал_болезней> Журнал_болезней { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Журнал_осмотров> Журнал_осмотров { get; set; }
