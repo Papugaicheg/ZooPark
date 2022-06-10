@@ -44,6 +44,7 @@ namespace ZooPark.cmVaccination
 
         private void UpdateVaccinationForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "Изменение записи о прививке";
             tbEmployee.Text = this.fio;
             tbAnimal.Text = this.animalName;

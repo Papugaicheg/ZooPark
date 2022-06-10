@@ -17,7 +17,6 @@ namespace ZooPark.cmAnimalForms
         private int id;
         private int aviary;
         private string name; //50
-        private int age;
         private double weight;
         private int height;
         private string habitat; //50
@@ -40,8 +39,8 @@ namespace ZooPark.cmAnimalForms
         
         private void UpdateAnimalForm_Load(object sender, EventArgs e)
         {
-            
 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "Изменение животного - " + animal.Название;
             tbName.Text = this.name;
             tbCurrentAviary.Text = "№ " + this.aviary.ToString();

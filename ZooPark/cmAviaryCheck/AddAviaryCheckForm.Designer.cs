@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAviaryCheckForm));
             this.countLb = new System.Windows.Forms.Label();
             this.btAddAviaryCheck = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
@@ -177,9 +178,10 @@
             this.Controls.Add(this.aviaryLb);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbEmployee);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddAviaryCheckForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddAviaryCheckForm";
+            this.Text = "Добавление записи о проверке вольера";
             this.Load += new System.EventHandler(this.AddAviaryCheckForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

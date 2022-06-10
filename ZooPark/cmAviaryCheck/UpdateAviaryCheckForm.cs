@@ -20,7 +20,6 @@ namespace ZooPark.cmAviaryCheck
         private string info;
         private DateTime dateAccept;
         private DateTime? dateDismiss;
-        private DateTime date;
         private string comment;
 
 
@@ -45,7 +44,8 @@ namespace ZooPark.cmAviaryCheck
 
         private void UpdateAviaryCheckForm_Load(object sender, EventArgs e)
         {
-            this.Text = "Внесение записи о проверки вольера";
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.Text = "Изменение записи о проверке вольера";
             tbEmployee.Text = this.fio;
             tbAviary.Text = this.info;
             dtpAviaryCheck.MaxDate = this.dateDismiss ?? DateTime.Today;

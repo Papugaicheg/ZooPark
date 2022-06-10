@@ -58,6 +58,7 @@ namespace ZooPark.cmEmployeeForms
 
         private void UpdateEmployeeForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             BirthDatePicker.MaxDate = DateTime.Today.AddYears(-16);
             this.Text = "Изменение сотрудника - " + this.surname + ' ' + this.name + ' ' + this.middlename;
             tbSurname.Text = this.surname;
@@ -274,19 +275,23 @@ namespace ZooPark.cmEmployeeForms
             DismissDatePicker.MinDate = AcceptDatePicker.Value.Date.AddDays(1);
         }
 
-     
+
 
         private void tbPassport_Validating(object sender, CancelEventArgs e)
         {
-            if (tbPassport.Text.Length > 50)
+            using (var db = new ZooparkModel())
             {
-                errorProvider.SetError(tbPassport, "Ошибка");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(tbPassport, String.Empty);
-                e.Cancel = false;
+                bool check = db.Сотрудник.Any(emp => emp.Паспорт == tbPassport.Text);
+                if (tbPassport.Text.Length > 50 || check)
+                {
+                    errorProvider.SetError(tbPassport, "Ошибка");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    errorProvider.SetError(tbPassport, String.Empty);
+                    e.Cancel = false;
+                }
             }
         }
 //Validating 

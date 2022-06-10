@@ -24,6 +24,7 @@ namespace ZooPark.cmAnimalsInspectionsForms
 
         private void AddAnimalsInspectionsForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             using (var db = new ZooparkModel())
             {
                 
@@ -117,10 +118,21 @@ namespace ZooPark.cmAnimalsInspectionsForms
             {
                 using (var db = new ZooparkModel())
                 {
+                    int an = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
+
+                    bool check = db.Журнал_осмотров.Any(rec => rec.Комментарий == "Нарушений не выявлено" && rec.Животное == an && System.Data.Entity.DbFunctions.TruncateTime(rec.Дата_проверки) == InspectionDatePicker.Value);
+
+                    if (check)
+                    {
+                        var range = db.Журнал_осмотров.Where(rec => rec.Комментарий == "Нарушений не выявлено" && rec.Животное == an && System.Data.Entity.DbFunctions.TruncateTime(rec.Дата_проверки) == InspectionDatePicker.Value);
+                        try { db.Журнал_осмотров.RemoveRange(range); }
+                        catch (Exception ex) { MessageBox.Show(ex.Message, "Добавлено", MessageBoxButtons.OK); }
+                    }
+                
                     db.Журнал_осмотров.Add(new Журнал_осмотров
                     {
                         Сотрудник = idEmp,
-                        Животное = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]),
+                        Животное = an,
                         Дата_проверки = InspectionDatePicker.Value,
                         Комментарий = this.comment
                     }) ;
@@ -147,6 +159,20 @@ namespace ZooPark.cmAnimalsInspectionsForms
                 this.receiptDate = db.Животное.Where(an => an.ID == animalID).First().Дата_поступления;
                 InspectionDatePicker.MinDate = this.receiptDate > this.acceptDate ? this.receiptDate : this.acceptDate;
 
+            }
+        }
+
+        private void cbEx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbEx.Checked)
+            {
+                tbComment.Enabled = false;
+                tbComment.Text = "Нарушений не выявлено";
+            }
+            else
+            {
+                tbComment.Enabled = true;
+                tbComment.Text = "";
             }
         }
     }

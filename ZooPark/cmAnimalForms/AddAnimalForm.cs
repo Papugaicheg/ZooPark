@@ -15,7 +15,6 @@ namespace ZooPark.cmAnimalForms
     {
         private int aviary;
         private string name; //50
-        private int age;
         private double weight;
         private int height;
         private string habitat; //50
@@ -61,6 +60,7 @@ namespace ZooPark.cmAnimalForms
 
         private void AddAnimalForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "Добавление животного";
             dtpReceipt.Enabled = false;
             dtpReceipt.Value = DateTime.Today;

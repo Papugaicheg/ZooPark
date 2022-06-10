@@ -21,7 +21,7 @@ namespace ZooPark.cmVaccination
         {
             InitializeComponent();
 
-            this.Text = "Добавление записи о прививке";
+            
 
 
             using (var db = new ZooparkModel())
@@ -33,33 +33,7 @@ namespace ZooPark.cmVaccination
                 this.acceptDate = employee.Дата_приема;
                 this.dismissDate = employee.Дата_увольнения;
             }
-            tbEmployee.Text = fio;
-
-            VaccinationDatePicker.MinDate = this.acceptDate;
-            VaccinationDatePicker.MaxDate = this.dismissDate ?? DateTime.Today;
-
-
-            if (GetTypes().Count > 0)
-            {
-                cbType.DataSource = GetTypes();
-                cbType.SelectedIndex = 0;
-            }
-            else
-            {
-                btAddVaccination.Enabled = false;
-                MessageBox.Show("Нет возможности добавить запись о прививке, так как отсутстуют типы имеющихся вакцин!", "Ошибка", MessageBoxButtons.OK);
-            }
-
-            if (GetAnimals().Count > 0)
-            {
-                cbAnimal.DataSource = GetAnimals();
-                cbAnimal.SelectedIndex = 0;
-            }
-            else
-            {
-                btAddVaccination.Enabled = false;
-                MessageBox.Show("Нет возможности добавить запись о прививке, так как отсутстуют животные!", "Ошибка", MessageBoxButtons.OK);
-            }
+           
         }
 
         private List<string> GetAnimals()
@@ -147,6 +121,39 @@ namespace ZooPark.cmVaccination
                 int animalID = Convert.ToInt32(cbAnimal.SelectedItem.ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0]);
                 this.receiptDate = db.Животное.Where(an => an.ID == animalID).First().Дата_поступления;
                 VaccinationDatePicker.MinDate = this.receiptDate > this.acceptDate ? this.receiptDate : this.acceptDate;
+            }
+        }
+
+        private void AddVaccinationForm_Load(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.Text = "Добавление записи о прививке";
+            tbEmployee.Text = fio;
+
+            VaccinationDatePicker.MinDate = this.acceptDate;
+            VaccinationDatePicker.MaxDate = this.dismissDate ?? DateTime.Today;
+
+
+            if (GetTypes().Count > 0)
+            {
+                cbType.DataSource = GetTypes();
+                cbType.SelectedIndex = 0;
+            }
+            else
+            {
+                btAddVaccination.Enabled = false;
+                MessageBox.Show("Нет возможности добавить запись о прививке, так как отсутстуют типы имеющихся вакцин!", "Ошибка", MessageBoxButtons.OK);
+            }
+
+            if (GetAnimals().Count > 0)
+            {
+                cbAnimal.DataSource = GetAnimals();
+                cbAnimal.SelectedIndex = 0;
+            }
+            else
+            {
+                btAddVaccination.Enabled = false;
+                MessageBox.Show("Нет возможности добавить запись о прививке, так как отсутстуют животные!", "Ошибка", MessageBoxButtons.OK);
             }
         }
     }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAnimalForm));
             this.CancelAddAnimalButton = new System.Windows.Forms.Button();
             this.AddAnimalButton = new System.Windows.Forms.Button();
             this.lbHabitat = new System.Windows.Forms.Label();
@@ -235,6 +236,7 @@
             this.Controls.Add(this.cbAviary);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lbName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddAnimalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddAnimalForm";

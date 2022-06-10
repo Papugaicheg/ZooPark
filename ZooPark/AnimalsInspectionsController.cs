@@ -65,12 +65,23 @@ namespace ZooPark
                 int id = (int)dgAnimalsInspections[0, i].Value;
                 using (var db = new ZooparkModel())
                 {
-                    if(db.Журнал_осмотров.Where(rec => rec.ID == id).First().Сотрудник == loggedID || loggedID == 2) {
-                        UpdateAnimalsInspectionsForm form = new UpdateAnimalsInspectionsForm(id);
-                        if (form.ShowDialog() == DialogResult.OK)
+                    if (db.Журнал_осмотров.Where(rec => rec.ID == id).First().Сотрудник == loggedID || db.Сотрудник.Where(em => em.ID == loggedID).First().Должность==6)
+                    {
+
+                        if (db.Журнал_осмотров.Any(rec => rec.ID == id && rec.Комментарий.Trim() != "Нарушений не выявлено"))
                         {
-                            SetAnimalsInspectionGrid();
+                            UpdateAnimalsInspectionsForm form = new UpdateAnimalsInspectionsForm(id);
+                            if (form.ShowDialog() == DialogResult.OK)
+                            {
+                                SetAnimalsInspectionGrid();
+                            }
                         }
+                        else
+                        {
+                            MessageBox.Show("Нельзя менять запись, если все хорошо!\nДобавьте новую запись если заметили нарушения!", "Ошибка", MessageBoxButtons.OK);
+                        }
+
+
                     }
                     else
                     {
@@ -88,6 +99,7 @@ namespace ZooPark
                 int[] posts = { 1, 4, 6 };
                 if (db.Сотрудник.Any(emp => (posts.Contains(emp.Должность) && emp.Дата_увольнения == null))) {
                     if(db.Сотрудник.Any(emp=> emp.ID == loggedID && posts.Contains(emp.Должность))) { 
+                        
                     AddAnimalsInspectionsForm form = new AddAnimalsInspectionsForm(loggedID);
                     if (form.ShowDialog() == DialogResult.OK)
                     {
@@ -120,23 +132,30 @@ namespace ZooPark
         {
             if (dgAnimalsInspections.SelectedCells.Count > 0)
             {
-                var i = dgAnimalsInspections.SelectedCells[0].OwningRow.Index;
+                using (var db = new ZooparkModel())
+                {
+                    var i = dgAnimalsInspections.SelectedCells[0].OwningRow.Index;
                 int recordID = (int)dgAnimalsInspections[0, i].Value;
-           
-                DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?",
+                if (db.Журнал_осмотров.Where(rec => rec.ID == recordID).First().Сотрудник == loggedID || db.Сотрудник.Where(em => em.ID == loggedID).First().Должность == 6) { 
+                    DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?",
                 "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    using (var db = new ZooparkModel())
-                    {
+                    
                         Журнал_осмотров record = db.Журнал_осмотров.Where(item => item.ID == recordID).First();
                         db.Журнал_осмотров.Remove(record);
                         db.SaveChanges();
+                    }
+                    }
+                    else {
+                        MessageBox.Show("Эта запись в журнале не принадлежит вам! Вы не можете ее удалить!", "Ошибка", MessageBoxButtons.OK);
                     }
                 }
             }
             SetAnimalsInspectionGrid();
 
         }
+
+        
     }
 }

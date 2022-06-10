@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateDiseaseForm));
             this.animalLb = new System.Windows.Forms.Label();
             this.diseaseLb = new System.Windows.Forms.Label();
             this.btCancel = new System.Windows.Forms.Button();
@@ -103,6 +104,7 @@
             this.Controls.Add(this.UpdateDiseaseButton);
             this.Controls.Add(this.diseaseLb);
             this.Controls.Add(this.animalLb);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateDiseaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateDiseaseForm";

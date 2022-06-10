@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPassForm));
             this.label1 = new System.Windows.Forms.Label();
             this.tbPass1 = new System.Windows.Forms.TextBox();
             this.tbPass2 = new System.Windows.Forms.TextBox();
@@ -80,7 +81,7 @@
             this.label2.Location = new System.Drawing.Point(270, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 16);
+            this.label2.Size = new System.Drawing.Size(114, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Введите пароль";
             // 
@@ -91,7 +92,7 @@
             this.label3.Location = new System.Drawing.Point(270, 83);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 32);
+            this.label3.Size = new System.Drawing.Size(131, 32);
             this.label3.TabIndex = 4;
             this.label3.Text = "Повторите \r\nвведенный пароль";
             // 
@@ -135,6 +136,7 @@
             this.Controls.Add(this.tbPass2);
             this.Controls.Add(this.tbPass1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddPassForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

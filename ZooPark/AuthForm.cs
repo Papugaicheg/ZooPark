@@ -40,6 +40,7 @@ namespace ZooPark
                         {
                             this.tbPassword.Text = "";
                             this.tbLogin.Text = "";
+                            Hide();
                             Zoopark form1 = new Zoopark(user.Сотрудник.ID);
                             if (form1.ShowDialog() == DialogResult.OK)
                             {
@@ -53,6 +54,7 @@ namespace ZooPark
                         {
                             if (db.Сотрудник.Any(emp => emp.ID == user.Сотрудник.ID && user.Сотрудник.Дата_увольнения == null))
                             {
+                                Hide();
                                 Zoopark form = new Zoopark(user.Сотрудник.ID);
                                 if (form.ShowDialog() == DialogResult.OK)
                                 {
@@ -92,6 +94,9 @@ namespace ZooPark
             return sOutput.ToString();
         }
 
-      
+        private void AuthForm_Load(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
     }
 }

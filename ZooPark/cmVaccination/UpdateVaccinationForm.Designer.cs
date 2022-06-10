@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateVaccinationForm));
             this.btUpdateVaccination = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.EmployeeLb = new System.Windows.Forms.Label();
@@ -75,7 +76,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(243, 157);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 19;
             this.label3.Text = "Прививка";
             // 
@@ -144,6 +145,7 @@
             this.Controls.Add(this.AnimalLb);
             this.Controls.Add(this.VaccinationDatePicker);
             this.Controls.Add(this.tbEmployee);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateVaccinationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateVaccinationForm";

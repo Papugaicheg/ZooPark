@@ -43,7 +43,7 @@ namespace ZooPark
 
         private void cmUpdateAnimal_Click(object sender, EventArgs e)
         {
-            if (dgEmployee.SelectedCells.Count > 0)
+            if (dgAnimals.SelectedCells.Count > 0)
             {
 
                 var i = dgAnimals.SelectedCells[0].OwningRow.Index;
@@ -84,7 +84,7 @@ namespace ZooPark
 
         private void cmDeleteAnimal_Click(object sender, EventArgs e)
         {
-            if (dgEmployee.SelectedCells.Count > 0)
+            if (dgAnimals.SelectedCells.Count > 0)
             {
                 string nameA = "";
                 var i = dgAnimals.SelectedCells[0].OwningRow.Index;
@@ -160,5 +160,9 @@ namespace ZooPark
 
             }
         }
+
+        
+
+      
     }
 }

@@ -108,7 +108,7 @@ namespace ZooPark.cmDiseaseForm
         private void AddDiseaseForm_Load(object sender, EventArgs e)
         {
 
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "Добавление заболевания";
             if (GetDiseas().Count > 0)
             {

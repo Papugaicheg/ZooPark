@@ -68,9 +68,9 @@ namespace ZooPark
 
         private void Zoopark_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
-           
-            
+
         }
 
         private void tabEmployee_Enter(object sender, EventArgs e)

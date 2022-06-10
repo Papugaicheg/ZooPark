@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAnimalsInspectionsForm));
             this.countLb = new System.Windows.Forms.Label();
             this.btAddInspection = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@
             this.cbAnimal = new System.Windows.Forms.ComboBox();
             this.tbEmployee = new System.Windows.Forms.TextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbEx = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             // 
             // btAddInspection
             // 
-            this.btAddInspection.Location = new System.Drawing.Point(12, 264);
+            this.btAddInspection.Location = new System.Drawing.Point(12, 295);
             this.btAddInspection.Name = "btAddInspection";
             this.btAddInspection.Size = new System.Drawing.Size(183, 40);
             this.btAddInspection.TabIndex = 22;
@@ -65,7 +67,7 @@
             // btCancel
             // 
             this.btCancel.CausesValidation = false;
-            this.btCancel.Location = new System.Drawing.Point(219, 264);
+            this.btCancel.Location = new System.Drawing.Point(219, 295);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(192, 40);
             this.btCancel.TabIndex = 21;
@@ -150,11 +152,23 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // cbEx
+            // 
+            this.cbEx.AutoSize = true;
+            this.cbEx.Location = new System.Drawing.Point(12, 259);
+            this.cbEx.Name = "cbEx";
+            this.cbEx.Size = new System.Drawing.Size(151, 17);
+            this.cbEx.TabIndex = 31;
+            this.cbEx.Text = "Нарушений не выявлено";
+            this.cbEx.UseVisualStyleBackColor = true;
+            this.cbEx.CheckedChanged += new System.EventHandler(this.cbEx_CheckedChanged);
+            // 
             // AddAnimalsInspectionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 328);
+            this.ClientSize = new System.Drawing.Size(436, 347);
+            this.Controls.Add(this.cbEx);
             this.Controls.Add(this.tbEmployee);
             this.Controls.Add(this.countLb);
             this.Controls.Add(this.btAddInspection);
@@ -166,9 +180,10 @@
             this.Controls.Add(this.tbComment);
             this.Controls.Add(this.InspectionDatePicker);
             this.Controls.Add(this.cbAnimal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddAnimalsInspectionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddAnimalsInspectionsForm";
+            this.Text = "Добавление записи об осмотре животного";
             this.Load += new System.EventHandler(this.AddAnimalsInspectionsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
@@ -190,5 +205,6 @@
         private System.Windows.Forms.ComboBox cbAnimal;
         private System.Windows.Forms.TextBox tbEmployee;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.CheckBox cbEx;
     }
 }

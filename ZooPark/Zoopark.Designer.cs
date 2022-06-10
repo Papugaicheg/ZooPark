@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zoopark));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabEmployee = new System.Windows.Forms.TabPage();
             this.dgEmployee = new System.Windows.Forms.DataGridView();
@@ -426,7 +427,7 @@
             this.cmDeleteDisease,
             this.cmMoreInfoAboutDisease});
             this.cmDisease.Name = "cmDisease";
-            this.cmDisease.Size = new System.Drawing.Size(221, 136);
+            this.cmDisease.Size = new System.Drawing.Size(221, 114);
             // 
             // cmUpdateDisease
             // 
@@ -533,6 +534,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(713, 366);
             this.Controls.Add(this.tabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Zoopark";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

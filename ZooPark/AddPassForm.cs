@@ -23,6 +23,7 @@ namespace ZooPark
 
         private void AddPassForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "Добавление пароля";
 
         }

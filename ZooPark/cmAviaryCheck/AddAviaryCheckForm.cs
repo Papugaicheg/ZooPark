@@ -45,6 +45,7 @@ namespace ZooPark.cmAviaryCheck
 
         private void AddAviaryCheckForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             using (var db = new ZooparkModel())
             {
                 tbEmployee.Text = emp.ID + " - " + emp.Фамилия + " " + emp.Имя + " " + emp.Отчество;
@@ -108,12 +109,20 @@ namespace ZooPark.cmAviaryCheck
             {
                 using (var db = new ZooparkModel())
                 {
-
+                    int av = Convert.ToInt32(cbAviary.SelectedItem.ToString().Split(' ')[1]);
+                   
+                    bool check = db.Проверка_вольеров.Any(rec => rec.Комментарий == "Нарушений не выявлено" && rec.Вольер == av && rec.Дата_проверки == dtpAviaryCheck.Value);
+                    if (check)
+                    {
+                        var range = db.Проверка_вольеров.Where(rec => rec.Комментарий == "Нарушений не выявлено" && rec.Вольер == av && System.Data.Entity.DbFunctions.TruncateTime(rec.Дата_проверки)==dtpAviaryCheck.Value.Date);
+                        try { db.Проверка_вольеров.RemoveRange(range); }
+                        catch(Exception ex) { MessageBox.Show(ex.Message, "Добавлено", MessageBoxButtons.OK); }
+                    }
                     db.Проверка_вольеров.Add(new Проверка_вольеров
                     {
                         
                         Сотрудник = Convert.ToInt32(tbEmployee.Text.Split(new string[] { " - " }, StringSplitOptions.None)[0]),
-                        Вольер = Convert.ToInt32(cbAviary.SelectedItem.ToString().Split(' ')[1]),
+                        Вольер = av,
                         Дата_проверки = dtpAviaryCheck.Value,
                         Комментарий = comment
                     }) ;

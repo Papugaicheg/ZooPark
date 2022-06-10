@@ -45,6 +45,7 @@ namespace ZooPark.cmAnimalsInspectionsForms
 
         private void UpdateAnimalsInspectionsForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "Изменение записи об осмотре";
 
             tbEmployee.Text = this.fio;

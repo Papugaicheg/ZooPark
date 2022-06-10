@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEmployeeForm));
             this.tbPhone = new System.Windows.Forms.MaskedTextBox();
             this.btCancel = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
@@ -362,6 +363,7 @@
             this.Controls.Add(this.tbMiddlename);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.tbSurname);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEmployeeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddEmployeeForm";

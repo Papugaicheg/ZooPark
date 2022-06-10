@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateAnimalsInspectionsForm));
             this.tbEmployee = new System.Windows.Forms.TextBox();
             this.InspectionDatePicker = new System.Windows.Forms.DateTimePicker();
             this.tbComment = new System.Windows.Forms.TextBox();
@@ -166,6 +167,7 @@
             this.Controls.Add(this.tbComment);
             this.Controls.Add(this.InspectionDatePicker);
             this.Controls.Add(this.tbEmployee);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UpdateAnimalsInspectionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -33,6 +33,7 @@ namespace ZooPark.cmDiseaseForm
 
         private void UpdateDiseaseForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "Изменение болезни животного";
             using (var db = new ZooparkModel())
             {

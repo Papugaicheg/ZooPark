@@ -66,14 +66,27 @@ namespace ZooPark
                 int id = (int)dgAviaryCheck[0, i].Value;
                 using (var db = new ZooparkModel())
                 {
-                    int[] posts = { 4, 2 };
-                    if (posts.Contains(loggedID))
-                    {
-                        UpdateAviaryCheckForm form = new UpdateAviaryCheckForm(id,loggedID);
-                        if (form.ShowDialog() == DialogResult.OK)
-                        {
-                            SetAviaryCheckGrid();
+                    int[] posts = { 4, 6 };
+                    if (posts.Contains(db.Сотрудник.Where(em => em.ID == loggedID).First().Должность))
+                    {   if(db.Проверка_вольеров.Any(rec => rec.ID==id && rec.Комментарий.Trim() != "Нарушений не выявлено")){
+                            bool check = db.Проверка_вольеров.Where(rec => rec.ID == id).First().Сотрудник ==  loggedID;
+                            if (check || db.Сотрудник.Where(em => em.ID == loggedID).First().Должность == 6) { 
+                            UpdateAviaryCheckForm form = new UpdateAviaryCheckForm(id, loggedID);
+                            if (form.ShowDialog() == DialogResult.OK)
+                            {
+                                SetAviaryCheckGrid();
+                            }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Запись не принадлежит вам!", "Ошибка", MessageBoxButtons.OK);
+                            }
                         }
+                        else
+                        {
+                            MessageBox.Show("Нельзя менять запись, если все хорошо!\nДобавьте новую запись если заметили нарушения!", "Ошибка", MessageBoxButtons.OK);
+                        }
+                        
                     }
                     else
                     {
@@ -93,6 +106,7 @@ namespace ZooPark
                 {
                     if (db.Сотрудник.Any(emp => emp.ID == loggedID && posts.Contains(emp.Должность)))
                     {
+                        
                         AddAviaryCheckForm form = new AddAviaryCheckForm(loggedID);
                         if (form.ShowDialog() == DialogResult.OK)
                         {
@@ -159,15 +173,19 @@ namespace ZooPark
             {
                 var i = dgAviaryCheck.SelectedCells[0].OwningRow.Index;
                 int recordID = (int)dgAviaryCheck[0, i].Value;
-                DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?",
-                    "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
+                using (var db = new ZooparkModel())
                 {
 
-
-                    using (var db = new ZooparkModel())
+                    if (db.Проверка_вольеров.Where(rec => rec.ID == recordID).First().Сотрудник == loggedID || db.Сотрудник.Where(em => em.ID == loggedID).First().Должность == 6)
                     {
-                         Проверка_вольеров record = db.Проверка_вольеров.Where(item => item.ID == recordID).First();
+                        DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?",
+                    "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+
+
+
+                        Проверка_вольеров record = db.Проверка_вольеров.Where(item => item.ID == recordID).First();
                         db.Проверка_вольеров.Remove(record);
 
                         db.SaveChanges();
@@ -175,10 +193,15 @@ namespace ZooPark
 
 
                     }
+                }else
+                    {
+                        MessageBox.Show("Эта запись в журнале не принадлежит вам! Вы не можете ее удалить!", "Ошибка", MessageBoxButtons.OK);
+                    }
                 }
             }
             SetAviaryCheckGrid();
         }
 
+        
     }
 }
