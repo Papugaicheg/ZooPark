@@ -31,7 +31,7 @@ namespace ZooPark
                 //1	  Ветеринар 
                 case 1:
                     tabControl.TabPages.AddRange(new TabPage[] { tabAnimals, tabAnimalsInspection, tabVaccination, tabDisease });
-                    ;
+                    
                     break;
 
                 //2   HR 

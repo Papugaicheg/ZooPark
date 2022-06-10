@@ -354,7 +354,7 @@ namespace ZooPark.cmEmployeeForms
 
             }
             catch (Exception)
-            { }
+            { MessageBox.Show("Учетные данные не были созданы!", "Ошибка", MessageBoxButtons.OK); }
         }
 
 

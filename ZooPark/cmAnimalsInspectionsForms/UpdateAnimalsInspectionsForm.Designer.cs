@@ -98,7 +98,6 @@
             this.label3.Size = new System.Drawing.Size(77, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Комментарий";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // EmployeeLb
             // 
@@ -141,7 +140,6 @@
             this.countLb.Name = "countLb";
             this.countLb.Size = new System.Drawing.Size(0, 13);
             this.countLb.TabIndex = 12;
-            this.countLb.Click += new System.EventHandler(this.countLb_Click);
             // 
             // tbAnimal
             // 

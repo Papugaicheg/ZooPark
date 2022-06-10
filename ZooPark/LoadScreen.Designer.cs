@@ -41,6 +41,7 @@ namespace ZooPark
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "LoadScreen";
             this.Text = "Зоопарк";
             this.Load += new System.EventHandler(this.LoadScreen_Load);
